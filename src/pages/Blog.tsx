@@ -11,7 +11,8 @@ const Blog = () => {
   const [search, setSearch] = useState("");
 
   const filtered = blogPosts.filter((post) => {
-    const matchesCategory = activeCategory === "All" || post.category === activeCategory;
+    const matchesCategory =
+      activeCategory === "All" || post.category === activeCategory;
     const matchesSearch =
       !search ||
       post.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -36,8 +37,12 @@ const Blog = () => {
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-        <h1 className="text-3xl font-bold font-sans text-foreground mb-2">Blog</h1>
-        <p className="text-muted-foreground mb-8">All our programming tutorials and guides in one place.</p>
+        <h1 className="text-3xl font-bold font-sans text-foreground mb-2">
+          Blog
+        </h1>
+        <p className="text-muted-foreground mb-8">
+          All our programming tutorials and guides in one place.
+        </p>
 
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
           <input
@@ -82,7 +87,9 @@ const Blog = () => {
             ))}
           </div>
         ) : (
-          <p className="text-center text-muted-foreground py-12">No articles found matching your criteria.</p>
+          <p className="text-center text-muted-foreground py-12">
+            No articles found matching your criteria.
+          </p>
         )}
       </div>
     </Layout>

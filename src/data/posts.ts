@@ -29,14 +29,16 @@ export const blogPosts: BlogPost[] = [
     id: "1",
     slug: "understanding-javascript-closures",
     title: "Understanding JavaScript Closures: A Complete Guide for Developers",
-    excerpt: "Master one of JavaScript's most powerful concepts. Learn how closures work, why they matter, and how to use them effectively in your code.",
+    excerpt:
+      "Master one of JavaScript's most powerful concepts. Learn how closures work, why they matter, and how to use them effectively in your code.",
     category: "JavaScript",
     tags: ["JavaScript", "Closures", "Functions", "Scope"],
     author: "Dhethi Team",
-    date: "2025-02-15",
+    date: "2026-02-15",
     readTime: "8 min read",
     featured: true,
-    metaDescription: "Learn JavaScript closures with practical examples. Understand scope, lexical environment, and real-world use cases for closures in modern JavaScript development.",
+    metaDescription:
+      "Learn JavaScript closures with practical examples. Understand scope, lexical environment, and real-world use cases for closures in modern JavaScript development.",
     content: `Closures are one of the most fundamental and powerful concepts in JavaScript. Whether you are a beginner just starting your journey or an experienced developer looking to deepen your understanding, mastering closures is essential for writing clean, efficient, and maintainable code.
 
 ## What Is a Closure?
@@ -259,20 +261,22 @@ The \`increment\` function forms a closure over \`count\`, capturing its value a
 
 Closures are not just a theoretical concept to understand for interviews. They are a practical tool that you use every day in JavaScript development. From data privacy to function factories, from event handlers to modern framework patterns, closures are woven into the fabric of JavaScript.
 
-The key takeaways are: closures capture references to variables, not copies of values. They persist as long as the closure itself is accessible. They enable powerful patterns like encapsulation, memoization, and partial application. Understanding closures deeply will make you a more effective JavaScript developer and help you write cleaner, more maintainable code.`
+The key takeaways are: closures capture references to variables, not copies of values. They persist as long as the closure itself is accessible. They enable powerful patterns like encapsulation, memoization, and partial application. Understanding closures deeply will make you a more effective JavaScript developer and help you write cleaner, more maintainable code.`,
   },
   {
     id: "2",
     slug: "python-list-comprehensions-guide",
     title: "Python List Comprehensions: Write Cleaner Code in Less Time",
-    excerpt: "Transform your Python code with list comprehensions. Learn syntax, best practices, and when to use them over traditional loops.",
+    excerpt:
+      "Transform your Python code with list comprehensions. Learn syntax, best practices, and when to use them over traditional loops.",
     category: "Python",
     tags: ["Python", "List Comprehensions", "Clean Code"],
     author: "Dhethi Team",
-    date: "2025-02-12",
+    date: "2026-02-12",
     readTime: "7 min read",
     featured: true,
-    metaDescription: "Master Python list comprehensions with examples. Learn syntax, nested comprehensions, conditional filtering, and performance tips for cleaner Python code.",
+    metaDescription:
+      "Master Python list comprehensions with examples. Learn syntax, nested comprehensions, conditional filtering, and performance tips for cleaner Python code.",
     content: `List comprehensions are one of Python's most beloved features. They provide a concise and readable way to create lists, transforming multiple lines of loop-based code into a single expressive line. If you are writing Python without list comprehensions, you are missing out on one of the language's greatest strengths.
 
 ## What Are List Comprehensions?
@@ -527,20 +531,22 @@ results = [y for x in data if (y := expensive_function(x)) is not None]
 
 ## Summary
 
-List comprehensions are a cornerstone of Pythonic code. They make your code more readable, often more performant, and more expressive. Start with simple transformations and filtering, then gradually incorporate more advanced patterns as you become comfortable. Remember that clarity always trumps brevity. A well-written loop is better than an unreadable comprehension.`
+List comprehensions are a cornerstone of Pythonic code. They make your code more readable, often more performant, and more expressive. Start with simple transformations and filtering, then gradually incorporate more advanced patterns as you become comfortable. Remember that clarity always trumps brevity. A well-written loop is better than an unreadable comprehension.`,
   },
   {
     id: "3",
     slug: "css-grid-layout-complete-tutorial",
-    title: "CSS Grid Layout: The Complete Tutorial You Need in 2025",
-    excerpt: "Stop struggling with layouts. Learn CSS Grid from scratch with practical examples and build complex layouts with ease.",
+    title: "CSS Grid Layout: The Complete Tutorial You Need in 2026",
+    excerpt:
+      "Stop struggling with layouts. Learn CSS Grid from scratch with practical examples and build complex layouts with ease.",
     category: "Web Development",
     tags: ["CSS", "Grid", "Layout", "Web Development"],
     author: "Dhethi Team",
-    date: "2025-02-10",
+    date: "2026-02-10",
     readTime: "10 min read",
     featured: true,
-    metaDescription: "Complete CSS Grid tutorial with practical examples. Learn grid containers, grid items, template areas, responsive layouts, and advanced techniques.",
+    metaDescription:
+      "Complete CSS Grid tutorial with practical examples. Learn grid containers, grid items, template areas, responsive layouts, and advanced techniques.",
     content: `CSS Grid Layout is the most powerful layout system available in CSS. It is a two-dimensional system, meaning it can handle both columns and rows, unlike Flexbox which is largely a one-dimensional system. If you have been relying solely on Flexbox for your layouts, it is time to add Grid to your toolkit.
 
 ## Why CSS Grid?
@@ -825,20 +831,22 @@ CSS Grid is supported in all modern browsers. For older browsers, consider using
 
 ## Summary
 
-CSS Grid is an essential tool for modern web development. Its two-dimensional nature, combined with powerful features like template areas, auto-fill, and minmax, makes complex layouts achievable with minimal code. Start with simple grids and progressively incorporate advanced features as you become more comfortable. The key is practice. Take an existing layout and rebuild it with Grid to see the difference firsthand.`
+CSS Grid is an essential tool for modern web development. Its two-dimensional nature, combined with powerful features like template areas, auto-fill, and minmax, makes complex layouts achievable with minimal code. Start with simple grids and progressively incorporate advanced features as you become more comfortable. The key is practice. Take an existing layout and rebuild it with Grid to see the difference firsthand.`,
   },
   {
     id: "4",
     slug: "git-branching-strategies-teams",
     title: "Git Branching Strategies Every Development Team Should Know",
-    excerpt: "Choose the right Git workflow for your team. Compare Git Flow, GitHub Flow, and trunk-based development with pros and cons.",
+    excerpt:
+      "Choose the right Git workflow for your team. Compare Git Flow, GitHub Flow, and trunk-based development with pros and cons.",
     category: "DevOps",
     tags: ["Git", "Version Control", "DevOps", "Team Workflow"],
     author: "Dhethi Team",
-    date: "2025-02-08",
+    date: "2026-02-08",
     readTime: "9 min read",
     featured: false,
-    metaDescription: "Compare Git branching strategies: Git Flow, GitHub Flow, and trunk-based development. Learn which workflow suits your team size and release cycle.",
+    metaDescription:
+      "Compare Git branching strategies: Git Flow, GitHub Flow, and trunk-based development. Learn which workflow suits your team size and release cycle.",
     content: `Choosing the right Git branching strategy can make or break your team's productivity. A good strategy provides structure without bureaucracy, enables parallel development, and makes releases predictable. A poor choice leads to merge conflicts, deployment bottlenecks, and frustrated developers.
 
 ## Why Branching Strategies Matter
@@ -1005,20 +1013,22 @@ Regardless of which strategy you choose, follow these practices: keep branches s
 
 ## Summary
 
-There is no universally best branching strategy. The right choice depends on your team size, deployment frequency, and release requirements. Start simple with GitHub Flow, adopt Git Flow if you need release management, and consider trunk-based development as your team and CI/CD pipeline mature. The goal is to enable your team to deliver quality code efficiently, not to follow a rigid process.`
+There is no universally best branching strategy. The right choice depends on your team size, deployment frequency, and release requirements. Start simple with GitHub Flow, adopt Git Flow if you need release management, and consider trunk-based development as your team and CI/CD pipeline mature. The goal is to enable your team to deliver quality code efficiently, not to follow a rigid process.`,
   },
   {
     id: "5",
     slug: "react-hooks-complete-reference",
     title: "React Hooks Complete Reference: useState, useEffect, and Beyond",
-    excerpt: "The definitive guide to React Hooks. Learn every built-in hook with practical examples and common patterns.",
+    excerpt:
+      "The definitive guide to React Hooks. Learn every built-in hook with practical examples and common patterns.",
     category: "React",
     tags: ["React", "Hooks", "JavaScript", "Frontend"],
     author: "Dhethi Team",
-    date: "2025-02-05",
+    date: "2026-02-05",
     readTime: "12 min read",
     featured: false,
-    metaDescription: "Complete React Hooks guide covering useState, useEffect, useContext, useReducer, useMemo, useCallback, and custom hooks with practical examples.",
+    metaDescription:
+      "Complete React Hooks guide covering useState, useEffect, useContext, useReducer, useMemo, useCallback, and custom hooks with practical examples.",
     content: `React Hooks revolutionized how we write React components. Introduced in React 16.8, they allow you to use state and other React features in functional components, eliminating the need for class components in most cases. This guide covers every built-in hook with practical examples.
 
 ## useState: Managing Component State
@@ -1316,20 +1326,23 @@ Two rules must be followed: only call hooks at the top level of your component o
 
 ## Summary
 
-React Hooks provide a powerful, composable way to manage state and side effects in functional components. Start with \`useState\` and \`useEffect\`, and gradually incorporate other hooks as your needs grow. Custom hooks are the key to building reusable, testable logic. Understanding hooks deeply will make you a more effective React developer and enable you to write cleaner, more maintainable code.`
+React Hooks provide a powerful, composable way to manage state and side effects in functional components. Start with \`useState\` and \`useEffect\`, and gradually incorporate other hooks as your needs grow. Custom hooks are the key to building reusable, testable logic. Understanding hooks deeply will make you a more effective React developer and enable you to write cleaner, more maintainable code.`,
   },
   {
     id: "6",
     slug: "binary-search-algorithm-explained",
-    title: "Binary Search Algorithm Explained with Examples in Multiple Languages",
-    excerpt: "Learn the binary search algorithm step by step. Understand time complexity, variations, and implement it in JavaScript, Python, and Java.",
+    title:
+      "Binary Search Algorithm Explained with Examples in Multiple Languages",
+    excerpt:
+      "Learn the binary search algorithm step by step. Understand time complexity, variations, and implement it in JavaScript, Python, and Java.",
     category: "Data Structures",
     tags: ["Algorithms", "Binary Search", "Data Structures", "Interview Prep"],
     author: "Dhethi Team",
-    date: "2025-02-02",
+    date: "2026-02-02",
     readTime: "8 min read",
     featured: false,
-    metaDescription: "Master binary search algorithm with step-by-step explanation. Implementations in JavaScript, Python, and Java with time complexity analysis.",
+    metaDescription:
+      "Master binary search algorithm with step-by-step explanation. Implementations in JavaScript, Python, and Java with time complexity analysis.",
     content: `Binary search is one of the most fundamental algorithms in computer science. It is elegant, efficient, and appears everywhere, from searching in databases to finding bugs in code through bisection. Every developer should understand it thoroughly, not just for interviews, but for everyday problem-solving.
 
 ## What Is Binary Search?
@@ -1555,20 +1568,23 @@ Binary search is used in database indexing (B-trees are based on binary search p
 
 ## Summary
 
-Binary search is a must-know algorithm. Its O(log n) efficiency makes it indispensable for working with sorted data. Practice implementing it from scratch, understand the variations, and learn to recognize problems where binary search applies. It appears frequently in coding interviews and real-world applications alike.`
+Binary search is a must-know algorithm. Its O(log n) efficiency makes it indispensable for working with sorted data. Practice implementing it from scratch, understand the variations, and learn to recognize problems where binary search applies. It appears frequently in coding interviews and real-world applications alike.`,
   },
   {
     id: "7",
     slug: "docker-containers-beginners-guide",
-    title: "Docker Containers for Beginners: Everything You Need to Get Started",
-    excerpt: "New to Docker? This beginner-friendly guide covers containers, images, Dockerfiles, and essential commands to containerize your first application.",
+    title:
+      "Docker Containers for Beginners: Everything You Need to Get Started",
+    excerpt:
+      "New to Docker? This beginner-friendly guide covers containers, images, Dockerfiles, and essential commands to containerize your first application.",
     category: "DevOps",
     tags: ["Docker", "Containers", "DevOps", "Deployment"],
     author: "Dhethi Team",
-    date: "2025-01-30",
+    date: "2026-01-30",
     readTime: "11 min read",
     featured: false,
-    metaDescription: "Beginner-friendly Docker tutorial covering containers, images, Dockerfiles, volumes, networking, and Docker Compose with practical examples.",
+    metaDescription:
+      "Beginner-friendly Docker tutorial covering containers, images, Dockerfiles, volumes, networking, and Docker Compose with practical examples.",
     content: `Docker has fundamentally changed how we build, ship, and run applications. If you are a developer who has heard about Docker but never used it, or if you have used it casually without fully understanding it, this guide is for you.
 
 ## What Is Docker?
@@ -1854,20 +1870,22 @@ HEALTHCHECK --interval=30s --timeout=3s \\
 
 ## Summary
 
-Docker simplifies the process of building, distributing, and running applications. Start by containerizing a simple application, then explore volumes, networking, and Docker Compose as your needs grow. The investment in learning Docker pays off quickly through easier deployments, consistent environments, and simplified collaboration. Once you start using Docker, you will wonder how you ever worked without it.`
+Docker simplifies the process of building, distributing, and running applications. Start by containerizing a simple application, then explore volumes, networking, and Docker Compose as your needs grow. The investment in learning Docker pays off quickly through easier deployments, consistent environments, and simplified collaboration. Once you start using Docker, you will wonder how you ever worked without it.`,
   },
   {
     id: "8",
     slug: "typescript-generics-practical-guide",
     title: "TypeScript Generics: A Practical Guide with Real-World Examples",
-    excerpt: "Demystify TypeScript generics. Learn how to write flexible, type-safe code with generic functions, classes, and interfaces.",
+    excerpt:
+      "Demystify TypeScript generics. Learn how to write flexible, type-safe code with generic functions, classes, and interfaces.",
     category: "JavaScript",
     tags: ["TypeScript", "Generics", "Type Safety"],
     author: "Dhethi Team",
-    date: "2025-01-27",
+    date: "2026-01-27",
     readTime: "9 min read",
     featured: false,
-    metaDescription: "Learn TypeScript generics with practical examples. Master generic functions, interfaces, constraints, and utility types for type-safe, reusable code.",
+    metaDescription:
+      "Learn TypeScript generics with practical examples. Master generic functions, interfaces, constraints, and utility types for type-safe, reusable code.",
     content: `TypeScript generics are one of the most powerful features of the type system. They allow you to write code that works with multiple types while maintaining type safety. If you have been avoiding generics because they look intimidating, this guide will help you understand and use them confidently.
 
 ## Why Generics?
@@ -2193,20 +2211,22 @@ type B = ElementType<number[]>; // number
 
 ## Summary
 
-Generics are essential for writing reusable, type-safe TypeScript code. Start with simple generic functions, then progress to interfaces, classes, and constraints. Use built-in utility types like Partial, Pick, and Record to avoid reinventing the wheel. The key insight is that generics let you defer type decisions to the caller while maintaining full type safety throughout your code.`
+Generics are essential for writing reusable, type-safe TypeScript code. Start with simple generic functions, then progress to interfaces, classes, and constraints. Use built-in utility types like Partial, Pick, and Record to avoid reinventing the wheel. The key insight is that generics let you defer type decisions to the caller while maintaining full type safety throughout your code.`,
   },
   {
     id: "9",
     slug: "rest-api-design-best-practices",
     title: "REST API Design Best Practices: Building APIs Developers Love",
-    excerpt: "Design REST APIs that are intuitive, consistent, and maintainable. Learn naming conventions, error handling, pagination, and versioning.",
+    excerpt:
+      "Design REST APIs that are intuitive, consistent, and maintainable. Learn naming conventions, error handling, pagination, and versioning.",
     category: "Web Development",
     tags: ["REST API", "API Design", "Backend", "Web Development"],
     author: "Dhethi Team",
-    date: "2025-01-24",
+    date: "2026-01-24",
     readTime: "10 min read",
     featured: false,
-    metaDescription: "Learn REST API design best practices including resource naming, HTTP methods, error handling, pagination, versioning, and authentication patterns.",
+    metaDescription:
+      "Learn REST API design best practices including resource naming, HTTP methods, error handling, pagination, versioning, and authentication patterns.",
     content: `A well-designed REST API is a joy to work with. It is intuitive, consistent, and self-documenting. A poorly designed one causes confusion, bugs, and endless support requests. Whether you are building an API for internal use or public consumption, following established best practices will save you and your consumers significant time and frustration.
 
 ## Resource Naming Conventions
@@ -2482,20 +2502,22 @@ Tools like OpenAPI (Swagger) help generate interactive documentation from your A
 
 ## Summary
 
-A well-designed REST API follows conventions that developers already know. Use proper HTTP methods and status codes. Be consistent with naming, error handling, and pagination. Version your API from day one. Document everything. The effort you invest in API design pays dividends through easier integration, fewer support requests, and happier developers.`
+A well-designed REST API follows conventions that developers already know. Use proper HTTP methods and status codes. Be consistent with naming, error handling, and pagination. Version your API from day one. Document everything. The effort you invest in API design pays dividends through easier integration, fewer support requests, and happier developers.`,
   },
   {
     id: "10",
     slug: "software-developer-resume-tips",
     title: "How to Write a Software Developer Resume That Gets Interviews",
-    excerpt: "Land more interviews with a resume that stands out. Learn formatting tips, what to include, and common mistakes to avoid.",
+    excerpt:
+      "Land more interviews with a resume that stands out. Learn formatting tips, what to include, and common mistakes to avoid.",
     category: "Career",
     tags: ["Career", "Resume", "Job Search", "Interview"],
     author: "Dhethi Team",
-    date: "2025-01-21",
+    date: "2026-01-21",
     readTime: "8 min read",
     featured: false,
-    metaDescription: "Write a software developer resume that lands interviews. Learn formatting tips, quantifying achievements, tailoring for ATS, and avoiding common mistakes.",
+    metaDescription:
+      "Write a software developer resume that lands interviews. Learn formatting tips, quantifying achievements, tailoring for ATS, and avoiding common mistakes.",
     content: `Your resume is often the first impression you make on a potential employer. In the competitive software development job market, a well-crafted resume can be the difference between landing an interview and being overlooked. This guide will help you create a resume that effectively showcases your skills and experience.
 
 ## The Foundation: Format and Structure
@@ -2640,20 +2662,23 @@ While not always required, a thoughtful cover letter can set you apart, especial
 
 ## Summary
 
-Your resume is a marketing document, not an autobiography. Every line should serve the purpose of getting you an interview. Focus on achievements over responsibilities, quantify your impact, tailor for each application, and keep the format clean and ATS-friendly. Review and update your resume regularly, even when you are not actively job hunting. The best time to update your resume is right after a significant achievement, when the details are fresh.`
+Your resume is a marketing document, not an autobiography. Every line should serve the purpose of getting you an interview. Focus on achievements over responsibilities, quantify your impact, tailor for each application, and keep the format clean and ATS-friendly. Review and update your resume regularly, even when you are not actively job hunting. The best time to update your resume is right after a significant achievement, when the details are fresh.`,
   },
   {
     id: "11",
     slug: "async-await-javascript-complete-guide",
-    title: "Async/Await in JavaScript: The Complete Guide to Asynchronous Programming",
-    excerpt: "Master asynchronous JavaScript with async/await. Learn promises, error handling, parallel execution, and common patterns.",
+    title:
+      "Async/Await in JavaScript: The Complete Guide to Asynchronous Programming",
+    excerpt:
+      "Master asynchronous JavaScript with async/await. Learn promises, error handling, parallel execution, and common patterns.",
     category: "JavaScript",
     tags: ["JavaScript", "Async", "Promises", "Asynchronous"],
     author: "Dhethi Team",
-    date: "2025-01-18",
+    date: "2026-01-18",
     readTime: "9 min read",
     featured: false,
-    metaDescription: "Master async/await in JavaScript. Learn promises, error handling, parallel execution with Promise.all, and best practices for asynchronous code.",
+    metaDescription:
+      "Master async/await in JavaScript. Learn promises, error handling, parallel execution with Promise.all, and best practices for asynchronous code.",
     content: `Asynchronous programming is essential in JavaScript. From fetching data from APIs to reading files, many operations do not complete instantly. Understanding async/await is crucial for writing clean, readable asynchronous code.
 
 ## The Evolution of Async JavaScript
@@ -2991,20 +3016,22 @@ await Promise.all(items.map(item => processItem(item)));
 
 ## Summary
 
-Async/await transforms asynchronous JavaScript from callback spaghetti into clean, readable code. Master the fundamentals of promises, use try/catch for error handling, leverage Promise.all for parallel execution, and avoid common pitfalls like forgetting await or unnecessary sequential execution. Asynchronous code is at the heart of modern JavaScript. Investing time in understanding these patterns will make you a significantly more effective developer.`
+Async/await transforms asynchronous JavaScript from callback spaghetti into clean, readable code. Master the fundamentals of promises, use try/catch for error handling, leverage Promise.all for parallel execution, and avoid common pitfalls like forgetting await or unnecessary sequential execution. Asynchronous code is at the heart of modern JavaScript. Investing time in understanding these patterns will make you a significantly more effective developer.`,
   },
   {
     id: "12",
     slug: "web-accessibility-developers-checklist",
     title: "Web Accessibility for Developers: A Practical Checklist",
-    excerpt: "Make your websites accessible to everyone. Learn WCAG guidelines, ARIA attributes, and practical techniques for inclusive web development.",
+    excerpt:
+      "Make your websites accessible to everyone. Learn WCAG guidelines, ARIA attributes, and practical techniques for inclusive web development.",
     category: "Web Development",
     tags: ["Accessibility", "A11y", "WCAG", "HTML"],
     author: "Dhethi Team",
-    date: "2025-01-15",
+    date: "2026-01-15",
     readTime: "9 min read",
     featured: false,
-    metaDescription: "Practical web accessibility guide for developers. Learn WCAG guidelines, semantic HTML, ARIA attributes, keyboard navigation, and testing techniques.",
+    metaDescription:
+      "Practical web accessibility guide for developers. Learn WCAG guidelines, semantic HTML, ARIA attributes, keyboard navigation, and testing techniques.",
     content: `Web accessibility ensures that websites and applications are usable by everyone, including people with disabilities. Beyond being the right thing to do, accessibility is a legal requirement in many jurisdictions and improves the experience for all users. This guide provides practical, actionable steps to make your web applications accessible.
 
 ## Why Accessibility Matters
@@ -3272,20 +3299,22 @@ Start with these high-impact, low-effort improvements: add alt text to all image
 
 ## Summary
 
-Web accessibility is not an afterthought. It is a fundamental aspect of quality web development. Start with semantic HTML, ensure keyboard accessibility, provide proper labels and alt text, maintain sufficient color contrast, and test regularly with assistive technologies. The goal is not perfection from day one but continuous improvement toward an inclusive web experience.`
+Web accessibility is not an afterthought. It is a fundamental aspect of quality web development. Start with semantic HTML, ensure keyboard accessibility, provide proper labels and alt text, maintain sufficient color contrast, and test regularly with assistive technologies. The goal is not perfection from day one but continuous improvement toward an inclusive web experience.`,
   },
   {
     id: "13",
     slug: "sql-joins-explained-visually",
     title: "SQL Joins Explained Visually: INNER, LEFT, RIGHT, and FULL Joins",
-    excerpt: "Finally understand SQL joins. Visual explanations with practical examples for INNER, LEFT, RIGHT, FULL, and CROSS joins.",
+    excerpt:
+      "Finally understand SQL joins. Visual explanations with practical examples for INNER, LEFT, RIGHT, FULL, and CROSS joins.",
     category: "Data Structures",
     tags: ["SQL", "Database", "Joins", "Data"],
     author: "Dhethi Team",
-    date: "2025-01-12",
+    date: "2026-01-12",
     readTime: "8 min read",
     featured: false,
-    metaDescription: "Understand SQL joins with visual explanations. Learn INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN, and CROSS JOIN with practical database examples.",
+    metaDescription:
+      "Understand SQL joins with visual explanations. Learn INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN, and CROSS JOIN with practical database examples.",
     content: `SQL joins are one of the most important concepts in relational databases. They allow you to combine data from two or more tables based on related columns. Despite being fundamental, joins often confuse developers. This guide uses clear explanations and practical examples to help you understand each type of join.
 
 ## Setting Up Our Example
@@ -3506,20 +3535,22 @@ When using LEFT or FULL joins, remember that joined columns can be NULL. Account
 
 ## Summary
 
-SQL joins are fundamental to working with relational databases. INNER JOIN gives you matching rows from both tables. LEFT JOIN gives you all rows from the left table plus matches. RIGHT JOIN gives you all rows from the right table plus matches. FULL JOIN gives you all rows from both tables. CROSS JOIN gives you every combination. Master these five types and you can handle any data relationship in your database.`
+SQL joins are fundamental to working with relational databases. INNER JOIN gives you matching rows from both tables. LEFT JOIN gives you all rows from the left table plus matches. RIGHT JOIN gives you all rows from the right table plus matches. FULL JOIN gives you all rows from both tables. CROSS JOIN gives you every combination. Master these five types and you can handle any data relationship in your database.`,
   },
   {
     id: "14",
     slug: "clean-code-principles-every-developer",
     title: "10 Clean Code Principles Every Developer Should Follow",
-    excerpt: "Write code that humans can read. Learn fundamental clean code principles with before-and-after examples that will transform your coding habits.",
+    excerpt:
+      "Write code that humans can read. Learn fundamental clean code principles with before-and-after examples that will transform your coding habits.",
     category: "Best Practices",
     tags: ["Clean Code", "Best Practices", "Software Engineering"],
     author: "Dhethi Team",
-    date: "2025-01-09",
+    date: "2026-01-09",
     readTime: "10 min read",
     featured: false,
-    metaDescription: "Learn 10 essential clean code principles with practical examples. Improve code readability, maintainability, and collaboration with these proven practices.",
+    metaDescription:
+      "Learn 10 essential clean code principles with practical examples. Improve code readability, maintainability, and collaboration with these proven practices.",
     content: `Clean code is not just about making code work. It is about making code that is easy to read, understand, and maintain. As Martin Fowler said, "Any fool can write code that a computer can understand. Good programmers write code that humans can understand." Here are ten principles that will fundamentally improve the quality of your code.
 
 ## 1. Meaningful Names
@@ -3829,20 +3860,22 @@ When working with existing code, follow the Boy Scout Rule: leave the code clean
 
 ## Summary
 
-Clean code is a skill developed through practice and discipline. These ten principles provide a foundation: use meaningful names, keep functions small, avoid magic numbers, do not repeat yourself, write purposeful comments, handle errors properly, follow single responsibility, keep things simple, format consistently, and write tests. Apply them consistently and your code will be easier to read, maintain, and extend.`
+Clean code is a skill developed through practice and discipline. These ten principles provide a foundation: use meaningful names, keep functions small, avoid magic numbers, do not repeat yourself, write purposeful comments, handle errors properly, follow single responsibility, keep things simple, format consistently, and write tests. Apply them consistently and your code will be easier to read, maintain, and extend.`,
   },
   {
     id: "15",
     slug: "react-performance-optimization-techniques",
     title: "React Performance Optimization: Techniques That Actually Matter",
-    excerpt: "Speed up your React applications with proven optimization techniques. Learn memoization, code splitting, virtualization, and profiling.",
+    excerpt:
+      "Speed up your React applications with proven optimization techniques. Learn memoization, code splitting, virtualization, and profiling.",
     category: "React",
     tags: ["React", "Performance", "Optimization", "Frontend"],
     author: "Dhethi Team",
-    date: "2025-01-06",
+    date: "2026-01-06",
     readTime: "10 min read",
     featured: false,
-    metaDescription: "Optimize React performance with memoization, code splitting, lazy loading, virtualization, and profiling. Practical techniques for faster React apps.",
+    metaDescription:
+      "Optimize React performance with memoization, code splitting, lazy loading, virtualization, and profiling. Practical techniques for faster React apps.",
     content: `React is fast by default, but as applications grow in complexity, performance can degrade. The key is knowing which optimizations matter and when to apply them. Premature optimization wastes time, but targeted optimization can dramatically improve user experience.
 
 ## Measure Before Optimizing
@@ -4138,20 +4171,22 @@ function SearchInput({ onSearch }) {
 
 ## Summary
 
-React performance optimization is about measuring, identifying bottlenecks, and applying targeted fixes. Start with the React DevTools Profiler to find problems. Use React.memo, useMemo, and useCallback to prevent unnecessary work. Apply code splitting to reduce initial load time. Virtualize long lists. Optimize images. And always remember: premature optimization is the root of all evil. Measure first, optimize second.`
+React performance optimization is about measuring, identifying bottlenecks, and applying targeted fixes. Start with the React DevTools Profiler to find problems. Use React.memo, useMemo, and useCallback to prevent unnecessary work. Apply code splitting to reduce initial load time. Virtualize long lists. Optimize images. And always remember: premature optimization is the root of all evil. Measure first, optimize second.`,
   },
   {
     id: "16",
     slug: "introduction-to-testing-javascript",
     title: "Introduction to Testing in JavaScript: Unit, Integration, and E2E",
-    excerpt: "Build confidence in your code with testing. Learn the testing pyramid, popular frameworks, and how to write your first tests.",
+    excerpt:
+      "Build confidence in your code with testing. Learn the testing pyramid, popular frameworks, and how to write your first tests.",
     category: "JavaScript",
     tags: ["Testing", "Jest", "JavaScript", "Quality"],
     author: "Dhethi Team",
-    date: "2025-01-03",
+    date: "2026-01-03",
     readTime: "10 min read",
     featured: false,
-    metaDescription: "Learn JavaScript testing from scratch. Understand unit, integration, and E2E testing with Jest, Testing Library, and Playwright examples.",
+    metaDescription:
+      "Learn JavaScript testing from scratch. Understand unit, integration, and E2E testing with Jest, Testing Library, and Playwright examples.",
     content: `Testing is one of the most valuable skills a developer can learn. Tests catch bugs before they reach production, enable confident refactoring, serve as living documentation, and speed up development in the long run. Despite these benefits, many developers skip testing or do it poorly. This guide will help you start testing effectively.
 
 ## The Testing Pyramid
@@ -4432,20 +4467,22 @@ Third-party library internals. Implementation details (state values, internal me
 
 ## Summary
 
-Testing is an investment that pays dividends in code quality, confidence, and development speed. Start with unit tests for your business logic, add integration tests for component interactions, and use E2E tests for critical user journeys. Focus on testing behavior, not implementation. And remember: some tests are better than no tests. Start small and build your testing practice over time.`
+Testing is an investment that pays dividends in code quality, confidence, and development speed. Start with unit tests for your business logic, add integration tests for component interactions, and use E2E tests for critical user journeys. Focus on testing behavior, not implementation. And remember: some tests are better than no tests. Start small and build your testing practice over time.`,
   },
   {
     id: "17",
     slug: "linux-command-line-essential-commands",
     title: "Linux Command Line: 30 Essential Commands Every Developer Needs",
-    excerpt: "Boost your productivity with essential Linux commands. From file management to process control, learn the commands you will use daily.",
+    excerpt:
+      "Boost your productivity with essential Linux commands. From file management to process control, learn the commands you will use daily.",
     category: "DevOps",
     tags: ["Linux", "Command Line", "Terminal", "DevOps"],
     author: "Dhethi Team",
     date: "2024-12-30",
     readTime: "11 min read",
     featured: false,
-    metaDescription: "Learn 30 essential Linux commands for developers. Master file management, text processing, process control, networking, and system administration.",
+    metaDescription:
+      "Learn 30 essential Linux commands for developers. Master file management, text processing, process control, networking, and system administration.",
     content: `The command line is a developer's superpower. While graphical interfaces are convenient, the terminal lets you automate tasks, manage servers, and work more efficiently. These 30 commands form the foundation of command-line proficiency.
 
 ## File and Directory Navigation
@@ -4735,20 +4772,28 @@ du -sh */ | sort -rh
 
 ## Summary
 
-These 30 commands form the foundation of command-line fluency. You do not need to memorize every option. Focus on the commands you use most frequently and use \`man command-name\` or \`command --help\` when you need details. The command line becomes more powerful the more you use it, and these fundamentals will serve you throughout your career.`
+These 30 commands form the foundation of command-line fluency. You do not need to memorize every option. Focus on the commands you use most frequently and use \`man command-name\` or \`command --help\` when you need details. The command line becomes more powerful the more you use it, and these fundamentals will serve you throughout your career.`,
   },
   {
     id: "18",
     slug: "python-virtual-environments-explained",
-    title: "Python Virtual Environments Explained: venv, virtualenv, and Poetry",
-    excerpt: "Stop polluting your global Python installation. Learn how to manage project dependencies with virtual environments and modern tools.",
+    title:
+      "Python Virtual Environments Explained: venv, virtualenv, and Poetry",
+    excerpt:
+      "Stop polluting your global Python installation. Learn how to manage project dependencies with virtual environments and modern tools.",
     category: "Python",
-    tags: ["Python", "Virtual Environments", "Dependencies", "Package Management"],
+    tags: [
+      "Python",
+      "Virtual Environments",
+      "Dependencies",
+      "Package Management",
+    ],
     author: "Dhethi Team",
     date: "2024-12-27",
     readTime: "8 min read",
     featured: false,
-    metaDescription: "Learn Python virtual environments with venv, virtualenv, and Poetry. Manage project dependencies, avoid conflicts, and set up reproducible environments.",
+    metaDescription:
+      "Learn Python virtual environments with venv, virtualenv, and Poetry. Manage project dependencies, avoid conflicts, and set up reproducible environments.",
     content: `If you have ever struggled with conflicting Python package versions between projects, or broken your system Python by installing the wrong package, virtual environments are the solution. They create isolated spaces for each project's dependencies, preventing conflicts and ensuring reproducibility.
 
 ## Why Virtual Environments?
@@ -5022,20 +5067,22 @@ If you encounter "command not found" after activating a venv, make sure you are 
 
 ## Summary
 
-Virtual environments are a fundamental part of Python development. For simple projects, venv is built in and sufficient. For more sophisticated dependency management, Poetry offers a modern, comprehensive solution. The key principle is simple: never install project dependencies globally. Always use a virtual environment, commit your dependency specifications to version control, and document how to set up the project for new contributors.`
+Virtual environments are a fundamental part of Python development. For simple projects, venv is built in and sufficient. For more sophisticated dependency management, Poetry offers a modern, comprehensive solution. The key principle is simple: never install project dependencies globally. Always use a virtual environment, commit your dependency specifications to version control, and document how to set up the project for new contributors.`,
   },
   {
     id: "19",
     slug: "responsive-web-design-modern-approach",
-    title: "Responsive Web Design in 2025: A Modern Approach",
-    excerpt: "Build websites that look great on every device. Learn modern responsive design techniques beyond media queries.",
+    title: "Responsive Web Design in 2026: A Modern Approach",
+    excerpt:
+      "Build websites that look great on every device. Learn modern responsive design techniques beyond media queries.",
     category: "Web Development",
     tags: ["CSS", "Responsive Design", "Mobile First", "Web Development"],
     author: "Dhethi Team",
     date: "2024-12-24",
     readTime: "9 min read",
     featured: false,
-    metaDescription: "Modern responsive web design techniques for 2025. Learn CSS Grid, Flexbox, container queries, fluid typography, and mobile-first design strategies.",
+    metaDescription:
+      "Modern responsive web design techniques for 2026. Learn CSS Grid, Flexbox, container queries, fluid typography, and mobile-first design strategies.",
     content: `Responsive web design has evolved significantly since Ethan Marcotte coined the term in 2010. While the core principle remains the same, making websites work well on any screen size, the tools and techniques available today are far more powerful. This guide covers modern responsive design strategies that go beyond basic media queries.
 
 ## Mobile-First Design
@@ -5310,7 +5357,7 @@ Test on real devices when possible, not just browser DevTools. Check on various 
 ### Common Breakpoints
 
 \`\`\`css
-/* Common breakpoints in 2025 */
+/* Common breakpoints in 2026 */
 /* Small phones: 320px - 375px */
 /* Large phones: 376px - 428px */
 /* Tablets: 768px - 1024px */
@@ -5379,20 +5426,22 @@ button, a {
 
 ## Summary
 
-Modern responsive design goes far beyond media queries. Fluid typography with clamp(), intrinsic layouts with CSS Grid, container queries, and modern viewport units create designs that adapt naturally to any screen. Start mobile-first, use fluid values, let content drive breakpoints, and test on real devices. The goal is not pixel-perfect reproduction across devices but providing an optimal experience on every screen.`
+Modern responsive design goes far beyond media queries. Fluid typography with clamp(), intrinsic layouts with CSS Grid, container queries, and modern viewport units create designs that adapt naturally to any screen. Start mobile-first, use fluid values, let content drive breakpoints, and test on real devices. The goal is not pixel-perfect reproduction across devices but providing an optimal experience on every screen.`,
   },
   {
     id: "20",
     slug: "debugging-strategies-for-developers",
     title: "Debugging Strategies: How to Find and Fix Bugs Efficiently",
-    excerpt: "Stop wasting hours on bugs. Learn systematic debugging strategies, essential tools, and mental models for finding and fixing issues fast.",
+    excerpt:
+      "Stop wasting hours on bugs. Learn systematic debugging strategies, essential tools, and mental models for finding and fixing issues fast.",
     category: "Best Practices",
     tags: ["Debugging", "Problem Solving", "Developer Tools", "Best Practices"],
     author: "Dhethi Team",
     date: "2024-12-21",
     readTime: "9 min read",
     featured: false,
-    metaDescription: "Learn systematic debugging strategies for faster bug resolution. Master browser DevTools, logging, binary search debugging, and common bug patterns.",
+    metaDescription:
+      "Learn systematic debugging strategies for faster bug resolution. Master browser DevTools, logging, binary search debugging, and common bug patterns.",
     content: `Every developer spends a significant portion of their time debugging. The difference between an efficient debugger and a frustrated one is not intelligence but strategy. Debugging is a skill that can be learned and improved with practice and the right mental models.
 
 ## The Debugging Mindset
@@ -5607,28 +5656,30 @@ If you have spent more than 30 minutes on a bug without making progress, it is t
 
 ## Summary
 
-Effective debugging is systematic, not random. Reproduce the bug, understand the expected versus actual behavior, form and test hypotheses, and use the right tools. Learn to recognize common bug patterns and use binary search to narrow down elusive issues. Most importantly, resist the temptation to randomly change code. Take a step back, think clearly, and approach the problem methodically. Debugging is a skill that improves with practice, and every bug you fix teaches you something new.`
-  }
+Effective debugging is systematic, not random. Reproduce the bug, understand the expected versus actual behavior, form and test hypotheses, and use the right tools. Learn to recognize common bug patterns and use binary search to narrow down elusive issues. Most importantly, resist the temptation to randomly change code. Take a step back, think clearly, and approach the problem methodically. Debugging is a skill that improves with practice, and every bug you fix teaches you something new.`,
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find(post => post.slug === slug);
+  return blogPosts.find((post) => post.slug === slug);
 }
 
 export function getPostsByCategory(category: string): BlogPost[] {
-  return blogPosts.filter(post => post.category === category);
+  return blogPosts.filter((post) => post.category === category);
 }
 
 export function getFeaturedPosts(): BlogPost[] {
-  return blogPosts.filter(post => post.featured);
+  return blogPosts.filter((post) => post.featured);
 }
 
 export function getRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
   const current = getPostBySlug(currentSlug);
   if (!current) return [];
-  
+
   return blogPosts
-    .filter(post => post.slug !== currentSlug && post.category === current.category)
+    .filter(
+      (post) => post.slug !== currentSlug && post.category === current.category,
+    )
     .slice(0, limit);
 }
 
@@ -5637,9 +5688,9 @@ export function getAllCategories(): string[] {
 }
 
 export function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 }
