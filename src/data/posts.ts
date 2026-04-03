@@ -5658,6 +5658,416 @@ If you have spent more than 30 minutes on a bug without making progress, it is t
 
 Effective debugging is systematic, not random. Reproduce the bug, understand the expected versus actual behavior, form and test hypotheses, and use the right tools. Learn to recognize common bug patterns and use binary search to narrow down elusive issues. Most importantly, resist the temptation to randomly change code. Take a step back, think clearly, and approach the problem methodically. Debugging is a skill that improves with practice, and every bug you fix teaches you something new.`,
   },
+  {
+    id: "21",
+    slug: "mastering-typescript-generics",
+    title: "Mastering TypeScript Generics: Write Reusable, Type-Safe Code",
+    excerpt:
+      "Unlock the full power of TypeScript with generics. Learn how to write flexible, reusable functions and components while maintaining complete type safety.",
+    category: "JavaScript",
+    tags: ["TypeScript", "Generics", "Type Safety", "JavaScript"],
+    author: "Dhethi Team",
+    date: "2026-04-03",
+    readTime: "9 min read",
+    featured: true,
+    metaDescription:
+      "Learn TypeScript generics from scratch. Understand generic functions, interfaces, classes, constraints, and utility types with practical examples for real-world development.",
+    content: `TypeScript generics are one of the most powerful features the language has to offer. They allow you to write code that is both flexible and type-safe, eliminating the need to choose between reusability and correctness. If you have been avoiding generics because they look intimidating, this guide will change your mind.
+
+## What Are Generics?
+
+Generics allow you to write functions, interfaces, and classes that work with a variety of types while still preserving type information. Think of them as type-level variables. Where a regular variable holds a value, a generic type parameter holds a type.
+
+Without generics, you face a dilemma. Either you write a function that accepts \`any\`, losing type safety, or you write multiple overloaded versions of the same function for each type. Generics solve both problems.
+
+\`\`\`typescript
+// Without generics - loses type information
+function identity(value: any): any {
+  return value;
+}
+
+const result = identity(42);
+// result is 'any' - TypeScript cannot help you here
+
+// With generics - preserves type information
+function identity<T>(value: T): T {
+  return value;
+}
+
+const result = identity(42);
+// result is inferred as 'number' - full type safety!
+\`\`\`
+
+The \`<T>\` syntax declares a type parameter named \`T\`. When you call the function, TypeScript infers what \`T\` should be based on the argument you pass.
+
+## Generic Functions
+
+Generic functions are the most common use of generics. Let us look at several practical examples.
+
+### A Type-Safe Array Wrapper
+
+\`\`\`typescript
+function firstElement<T>(arr: T[]): T | undefined {
+  return arr[0];
+}
+
+const firstNum = firstElement([1, 2, 3]);     // number | undefined
+const firstStr = firstElement(["a", "b"]);    // string | undefined
+const firstBool = firstElement([true, false]); // boolean | undefined
+\`\`\`
+
+### Multiple Type Parameters
+
+You can use multiple type parameters when a function works with more than one type:
+
+\`\`\`typescript
+function pair<K, V>(key: K, value: V): [K, V] {
+  return [key, value];
+}
+
+const entry = pair("name", "Alice");
+// Type is [string, string]
+
+const indexed = pair(1, { label: "item" });
+// Type is [number, { label: string }]
+\`\`\`
+
+### Mapping and Transforming
+
+\`\`\`typescript
+function mapArray<T, U>(arr: T[], transform: (item: T) => U): U[] {
+  return arr.map(transform);
+}
+
+const lengths = mapArray(["hello", "world"], (s) => s.length);
+// lengths is number[]
+
+const doubled = mapArray([1, 2, 3], (n) => n * 2);
+// doubled is number[]
+\`\`\`
+
+## Generic Interfaces
+
+Interfaces can also be generic, making them incredibly flexible building blocks.
+
+\`\`\`typescript
+interface ApiResponse<T> {
+  data: T;
+  status: number;
+  message: string;
+  timestamp: Date;
+}
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+}
+
+// Fully typed API responses
+const userResponse: ApiResponse<User> = {
+  data: { id: 1, name: "Alice", email: "alice@example.com" },
+  status: 200,
+  message: "Success",
+  timestamp: new Date(),
+};
+
+const productResponse: ApiResponse<Product[]> = {
+  data: [{ id: 1, title: "Laptop", price: 999 }],
+  status: 200,
+  message: "Success",
+  timestamp: new Date(),
+};
+\`\`\`
+
+### Generic Repository Pattern
+
+\`\`\`typescript
+interface Repository<T, ID> {
+  findById(id: ID): Promise<T | null>;
+  findAll(): Promise<T[]>;
+  save(entity: T): Promise<T>;
+  delete(id: ID): Promise<void>;
+}
+
+class UserRepository implements Repository<User, number> {
+  async findById(id: number): Promise<User | null> {
+    // Implementation
+    return null;
+  }
+  async findAll(): Promise<User[]> {
+    return [];
+  }
+  async save(user: User): Promise<User> {
+    return user;
+  }
+  async delete(id: number): Promise<void> {}
+}
+\`\`\`
+
+## Generic Classes
+
+Classes can accept generic type parameters, enabling powerful abstractions.
+
+\`\`\`typescript
+class Stack<T> {
+  private items: T[] = [];
+
+  push(item: T): void {
+    this.items.push(item);
+  }
+
+  pop(): T | undefined {
+    return this.items.pop();
+  }
+
+  peek(): T | undefined {
+    return this.items[this.items.length - 1];
+  }
+
+  get size(): number {
+    return this.items.length;
+  }
+
+  isEmpty(): boolean {
+    return this.items.length === 0;
+  }
+}
+
+const numStack = new Stack<number>();
+numStack.push(1);
+numStack.push(2);
+console.log(numStack.pop()); // 2 (type: number)
+
+const strStack = new Stack<string>();
+strStack.push("hello");
+// strStack.push(42); // Error! Only strings allowed
+\`\`\`
+
+## Generic Constraints
+
+Sometimes you need to restrict what types can be used as a generic parameter. That is where constraints come in using the \`extends\` keyword.
+
+\`\`\`typescript
+// T must have a 'length' property
+function getLength<T extends { length: number }>(value: T): number {
+  return value.length;
+}
+
+getLength("hello");        // Works: strings have .length
+getLength([1, 2, 3]);      // Works: arrays have .length
+getLength({ length: 10 }); // Works: object has .length
+// getLength(42);           // Error! numbers have no .length
+\`\`\`
+
+### Constraining to Object Keys
+
+\`\`\`typescript
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
+}
+
+const person = { name: "Alice", age: 30, city: "NYC" };
+
+const name = getProperty(person, "name"); // string
+const age = getProperty(person, "age");   // number
+// getProperty(person, "email"); // Error! 'email' is not a key of person
+\`\`\`
+
+### Multiple Constraints
+
+\`\`\`typescript
+interface Serializable {
+  serialize(): string;
+}
+
+interface Identifiable {
+  id: string | number;
+}
+
+function saveEntity<T extends Serializable & Identifiable>(entity: T): void {
+  console.log(\`Saving entity \${entity.id}: \${entity.serialize()}\`);
+}
+\`\`\`
+
+## Default Type Parameters
+
+TypeScript supports default values for type parameters, similar to default function parameters:
+
+\`\`\`typescript
+interface PaginatedList<T, Cursor = string> {
+  items: T[];
+  nextCursor: Cursor | null;
+  totalCount: number;
+}
+
+// Uses default cursor type (string)
+const list: PaginatedList<User> = {
+  items: [],
+  nextCursor: "abc123",
+  totalCount: 100,
+};
+
+// Override cursor type to number
+const numCursorList: PaginatedList<User, number> = {
+  items: [],
+  nextCursor: 42,
+  totalCount: 50,
+};
+\`\`\`
+
+## Conditional Types with Generics
+
+Conditional types take generics to the next level, allowing types that depend on other types.
+
+\`\`\`typescript
+type IsArray<T> = T extends any[] ? true : false;
+
+type A = IsArray<string[]>;  // true
+type B = IsArray<number>;    // false
+
+// Extract the element type from an array
+type ElementType<T> = T extends (infer U)[] ? U : never;
+
+type StrElement = ElementType<string[]>;  // string
+type NumElement = ElementType<number[]>;  // number
+type Never = ElementType<boolean>;        // never
+\`\`\`
+
+## Built-In Utility Types (Powered by Generics)
+
+TypeScript ships with many built-in utility types that are implemented using generics. Understanding the pattern helps you create your own.
+
+\`\`\`typescript
+// Partial<T> - makes all properties optional
+type Partial<T> = { [K in keyof T]?: T[K] };
+
+// Required<T> - makes all properties required
+type Required<T> = { [K in keyof T]-?: T[K] };
+
+// Readonly<T> - makes all properties readonly
+type Readonly<T> = { readonly [K in keyof T]: T[K] };
+
+// Pick<T, K> - picks a subset of properties
+type Pick<T, K extends keyof T> = { [P in K]: T[P] };
+
+// Record<K, V> - creates a type with keys K and values V
+type Record<K extends keyof any, V> = { [P in K]: V };
+\`\`\`
+
+### Practical Usage
+
+\`\`\`typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+}
+
+// Only update some fields - no field is required
+function updateUser(id: number, updates: Partial<User>): Promise<User> {
+  // Implementation
+  return Promise.resolve({ id, name: "", email: "", age: 0, ...updates });
+}
+
+// Only expose public-facing fields
+type PublicUser = Pick<User, "id" | "name">;
+
+// Map user IDs to users
+const userCache: Record<number, User> = {};
+\`\`\`
+
+## Creating Your Own Utility Types
+
+Once you understand the patterns, you can write powerful utility types for your domain:
+
+\`\`\`typescript
+// Make certain keys required, leave others optional
+type RequireFields<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
+
+type UserWithRequiredEmail = RequireFields<Partial<User>, "email">;
+// email is required, all other fields optional
+
+// Deep partial - make nested types optional too
+type DeepPartial<T> = T extends object
+  ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : T;
+
+// Nullable<T> - add null to a type
+type Nullable<T> = T | null;
+
+type MaybeUser = Nullable<User>;
+\`\`\`
+
+## Real-World Example: A Type-Safe Event Emitter
+
+\`\`\`typescript
+type EventMap = Record<string, any>;
+
+class TypedEventEmitter<Events extends EventMap> {
+  private listeners: {
+    [K in keyof Events]?: Array<(data: Events[K]) => void>;
+  } = {};
+
+  on<K extends keyof Events>(
+    event: K,
+    listener: (data: Events[K]) => void
+  ): void {
+    if (!this.listeners[event]) {
+      this.listeners[event] = [];
+    }
+    this.listeners[event]!.push(listener);
+  }
+
+  emit<K extends keyof Events>(event: K, data: Events[K]): void {
+    this.listeners[event]?.forEach((listener) => listener(data));
+  }
+}
+
+// Define your event types
+interface AppEvents {
+  login: { userId: string; timestamp: Date };
+  logout: { userId: string };
+  error: { message: string; code: number };
+}
+
+const emitter = new TypedEventEmitter<AppEvents>();
+
+emitter.on("login", ({ userId, timestamp }) => {
+  console.log(\`User \${userId} logged in at \${timestamp}\`);
+});
+
+emitter.emit("login", { userId: "u123", timestamp: new Date() });
+// emitter.emit("login", { userId: 42 }); // Error! userId must be string
+\`\`\`
+
+## Common Pitfalls
+
+### Over-Constraining Too Early
+
+Avoid adding constraints before you know you need them. Start generic, add constraints as the compiler tells you they are needed.
+
+### Using \`any\` as a Constraint Escape Hatch
+
+If you find yourself writing \`<T extends any>\`, you have lost the benefit of generics entirely. Revisit your design instead.
+
+### Overly Complex Nested Generics
+
+Deeply nested generic types become hard to read and reason about. If your type definition spans more than two or three levels deep, consider breaking it into named intermediate types.
+
+## Summary
+
+TypeScript generics transform the way you write reusable code. Generic functions preserve type information through transformations. Generic interfaces define flexible contracts. Generic classes create type-safe data structures. Constraints ensure your generics are used correctly. Built-in and custom utility types give you powerful tools for type manipulation.
+
+The key insight is that generics are not magic. They are simply variables for types, following the same logical patterns as regular code. Once you internalize that mental model, complex generic signatures become readable specifications. Start applying generics in your own code whenever you find yourself writing similar logic for different types, and your TypeScript will become dramatically more expressive and safe.`,
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
