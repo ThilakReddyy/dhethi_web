@@ -5,8 +5,13 @@ import SEOHead from "@/components/SEOHead";
 import { blogPosts, getFeaturedPosts, categories } from "@/data/posts";
 
 const Index = () => {
-  const featured = getFeaturedPosts();
-  const recent = blogPosts.slice(0, 6);
+  const sortedPosts = [...blogPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  const featured = getFeaturedPosts().sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  const recent = sortedPosts.slice(0, 6);
 
   return (
     <Layout>

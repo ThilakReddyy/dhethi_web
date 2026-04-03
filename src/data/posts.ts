@@ -6153,11 +6153,9 @@ pip install anthropic
 
 Here is a minimal Node.js example that calls Claude Sonnet 4.6:
 
-\`\`\`typescript
+\`\`\`javascript 
 import Anthropic from "@anthropic-ai/sdk";
-
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
 async function main() {
   const message = await client.messages.create({
     model: "claude-sonnet-4-6",
@@ -6171,7 +6169,6 @@ async function main() {
   });
   console.log(message.content[0]);
 }
-
 main();
 \`\`\`
 
@@ -6179,9 +6176,7 @@ And the Python equivalent:
 
 \`\`\`python
 import anthropic
-
 client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from env
-
 message = client.messages.create(
     model="claude-sonnet-4-6",
     max_tokens=1024,

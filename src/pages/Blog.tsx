@@ -10,15 +10,17 @@ const Blog = () => {
   const activeCategory = searchParams.get("category") || "All";
   const [search, setSearch] = useState("");
 
-  const filtered = blogPosts.filter((post) => {
-    const matchesCategory =
-      activeCategory === "All" || post.category === activeCategory;
-    const matchesSearch =
-      !search ||
-      post.title.toLowerCase().includes(search.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(search.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filtered = blogPosts
+    .filter((post) => {
+      const matchesCategory =
+        activeCategory === "All" || post.category === activeCategory;
+      const matchesSearch =
+        !search ||
+        post.title.toLowerCase().includes(search.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(search.toLowerCase());
+      return matchesCategory && matchesSearch;
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const handleCategoryChange = (cat: string) => {
     if (cat === "All") {
