@@ -5681,21 +5681,23 @@ Generics allow you to write functions, interfaces, and classes that work with a 
 Without generics, you face a dilemma. Either you write a function that accepts \`any\`, losing type safety, or you write multiple overloaded versions of the same function for each type. Generics solve both problems.
 
 \`\`\`typescript
-// Without generics - loses type information
-function identity(value: any): any {
-  return value;
-}
 
-const result = identity(42);
-// result is 'any' - TypeScript cannot help you here
+  // Without generics - loses type information
+  function identity(value: any): any {
+    return value;
+  }
 
-// With generics - preserves type information
-function identity<T>(value: T): T {
-  return value;
-}
+  const result = identity(42);
+  // result is 'any' - TypeScript cannot help you here
 
-const result = identity(42);
-// result is inferred as 'number' - full type safety!
+  // With generics - preserves type information
+  function identity<T>(value: T): T {
+    return value;
+  }
+
+  const result = identity(42);
+  // result is inferred as 'number' - full type safety!
+  
 \`\`\`
 
 The \`<T>\` syntax declares a type parameter named \`T\`. When you call the function, TypeScript infers what \`T\` should be based on the argument you pass.
@@ -5707,13 +5709,15 @@ Generic functions are the most common use of generics. Let us look at several pr
 ### A Type-Safe Array Wrapper
 
 \`\`\`typescript
-function firstElement<T>(arr: T[]): T | undefined {
-  return arr[0];
-}
 
-const firstNum = firstElement([1, 2, 3]);     // number | undefined
-const firstStr = firstElement(["a", "b"]);    // string | undefined
-const firstBool = firstElement([true, false]); // boolean | undefined
+  function firstElement<T>(arr: T[]): T | undefined {
+    return arr[0];
+  }
+
+  const firstNum = firstElement([1, 2, 3]);     // number | undefined
+  const firstStr = firstElement(["a", "b"]);    // string | undefined
+  const firstBool = firstElement([true, false]); // boolean | undefined
+
 \`\`\`
 
 ### Multiple Type Parameters
@@ -5721,29 +5725,33 @@ const firstBool = firstElement([true, false]); // boolean | undefined
 You can use multiple type parameters when a function works with more than one type:
 
 \`\`\`typescript
-function pair<K, V>(key: K, value: V): [K, V] {
-  return [key, value];
-}
 
-const entry = pair("name", "Alice");
-// Type is [string, string]
+  function pair<K, V>(key: K, value: V): [K, V] {
+    return [key, value];
+  }
 
-const indexed = pair(1, { label: "item" });
-// Type is [number, { label: string }]
+  const entry = pair("name", "Alice");
+  // Type is [string, string]
+
+  const indexed = pair(1, { label: "item" });
+  // Type is [number, { label: string }]
+
 \`\`\`
 
 ### Mapping and Transforming
 
 \`\`\`typescript
-function mapArray<T, U>(arr: T[], transform: (item: T) => U): U[] {
-  return arr.map(transform);
-}
 
-const lengths = mapArray(["hello", "world"], (s) => s.length);
-// lengths is number[]
+  function mapArray<T, U>(arr: T[], transform: (item: T) => U): U[] {
+    return arr.map(transform);
+  }
 
-const doubled = mapArray([1, 2, 3], (n) => n * 2);
-// doubled is number[]
+  const lengths = mapArray(["hello", "world"], (s) => s.length);
+  // lengths is number[]
+
+  const doubled = mapArray([1, 2, 3], (n) => n * 2);
+  // doubled is number[]
+  
 \`\`\`
 
 ## Generic Interfaces
@@ -5751,64 +5759,68 @@ const doubled = mapArray([1, 2, 3], (n) => n * 2);
 Interfaces can also be generic, making them incredibly flexible building blocks.
 
 \`\`\`typescript
-interface ApiResponse<T> {
-  data: T;
-  status: number;
-  message: string;
-  timestamp: Date;
-}
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
+  interface ApiResponse<T> {
+    data: T;
+    status: number;
+    message: string;
+    timestamp: Date;
+  }
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-}
+  interface User {
+    id: number;
+    name: string;
+    email: string;
+  }
 
-// Fully typed API responses
-const userResponse: ApiResponse<User> = {
-  data: { id: 1, name: "Alice", email: "alice@example.com" },
-  status: 200,
-  message: "Success",
-  timestamp: new Date(),
-};
+  interface Product {
+    id: number;
+    title: string;
+    price: number;
+  }
 
-const productResponse: ApiResponse<Product[]> = {
-  data: [{ id: 1, title: "Laptop", price: 999 }],
-  status: 200,
-  message: "Success",
-  timestamp: new Date(),
-};
+  // Fully typed API responses
+  const userResponse: ApiResponse<User> = {
+    data: { id: 1, name: "Alice", email: "alice@example.com" },
+    status: 200,
+    message: "Success",
+    timestamp: new Date(),
+  };
+
+  const productResponse: ApiResponse<Product[]> = {
+    data: [{ id: 1, title: "Laptop", price: 999 }],
+    status: 200,
+    message: "Success",
+    timestamp: new Date(),
+  };
+
 \`\`\`
 
 ### Generic Repository Pattern
 
 \`\`\`typescript
-interface Repository<T, ID> {
-  findById(id: ID): Promise<T | null>;
-  findAll(): Promise<T[]>;
-  save(entity: T): Promise<T>;
-  delete(id: ID): Promise<void>;
-}
 
-class UserRepository implements Repository<User, number> {
-  async findById(id: number): Promise<User | null> {
-    // Implementation
-    return null;
+  interface Repository<T, ID> {
+    findById(id: ID): Promise<T | null>;
+    findAll(): Promise<T[]>;
+    save(entity: T): Promise<T>;
+    delete(id: ID): Promise<void>;
   }
-  async findAll(): Promise<User[]> {
-    return [];
+
+  class UserRepository implements Repository<User, number> {
+    async findById(id: number): Promise<User | null> {
+      // Implementation
+      return null;
+    }
+    async findAll(): Promise<User[]> {
+      return [];
+    }
+    async save(user: User): Promise<User> {
+      return user;
+    }
+    async delete(id: number): Promise<void> {}
   }
-  async save(user: User): Promise<User> {
-    return user;
-  }
-  async delete(id: number): Promise<void> {}
-}
+
 \`\`\`
 
 ## Generic Classes
@@ -5816,38 +5828,40 @@ class UserRepository implements Repository<User, number> {
 Classes can accept generic type parameters, enabling powerful abstractions.
 
 \`\`\`typescript
-class Stack<T> {
-  private items: T[] = [];
 
-  push(item: T): void {
-    this.items.push(item);
+  class Stack<T> {
+    private items: T[] = [];
+
+    push(item: T): void {
+      this.items.push(item);
+    }
+
+    pop(): T | undefined {
+      return this.items.pop();
+    }
+
+    peek(): T | undefined {
+      return this.items[this.items.length - 1];
+    }
+
+    get size(): number {
+      return this.items.length;
+    }
+
+    isEmpty(): boolean {
+      return this.items.length === 0;
+    }
   }
 
-  pop(): T | undefined {
-    return this.items.pop();
-  }
+  const numStack = new Stack<number>();
+  numStack.push(1);
+  numStack.push(2);
+  console.log(numStack.pop()); // 2 (type: number)
 
-  peek(): T | undefined {
-    return this.items[this.items.length - 1];
-  }
-
-  get size(): number {
-    return this.items.length;
-  }
-
-  isEmpty(): boolean {
-    return this.items.length === 0;
-  }
-}
-
-const numStack = new Stack<number>();
-numStack.push(1);
-numStack.push(2);
-console.log(numStack.pop()); // 2 (type: number)
-
-const strStack = new Stack<string>();
-strStack.push("hello");
-// strStack.push(42); // Error! Only strings allowed
+  const strStack = new Stack<string>();
+  strStack.push("hello");
+  // strStack.push(42); // Error! Only strings allowed
+  
 \`\`\`
 
 ## Generic Constraints
@@ -6009,43 +6023,45 @@ type MaybeUser = Nullable<User>;
 ## Real-World Example: A Type-Safe Event Emitter
 
 \`\`\`typescript
-type EventMap = Record<string, any>;
 
-class TypedEventEmitter<Events extends EventMap> {
-  private listeners: {
-    [K in keyof Events]?: Array<(data: Events[K]) => void>;
-  } = {};
+  type EventMap = Record<string, any>;
 
-  on<K extends keyof Events>(
-    event: K,
-    listener: (data: Events[K]) => void
-  ): void {
-    if (!this.listeners[event]) {
-      this.listeners[event] = [];
+  class TypedEventEmitter<Events extends EventMap> {
+    private listeners: {
+      [K in keyof Events]?: Array<(data: Events[K]) => void>;
+    } = {};
+
+    on<K extends keyof Events>(
+      event: K,
+      listener: (data: Events[K]) => void
+    ): void {
+      if (!this.listeners[event]) {
+        this.listeners[event] = [];
+      }
+      this.listeners[event]!.push(listener);
     }
-    this.listeners[event]!.push(listener);
+
+    emit<K extends keyof Events>(event: K, data: Events[K]): void {
+      this.listeners[event]?.forEach((listener) => listener(data));
+    }
   }
 
-  emit<K extends keyof Events>(event: K, data: Events[K]): void {
-    this.listeners[event]?.forEach((listener) => listener(data));
+  // Define your event types
+  interface AppEvents {
+    login: { userId: string; timestamp: Date };
+    logout: { userId: string };
+    error: { message: string; code: number };
   }
-}
 
-// Define your event types
-interface AppEvents {
-  login: { userId: string; timestamp: Date };
-  logout: { userId: string };
-  error: { message: string; code: number };
-}
+  const emitter = new TypedEventEmitter<AppEvents>();
 
-const emitter = new TypedEventEmitter<AppEvents>();
+  emitter.on("login", ({ userId, timestamp }) => {
+    console.log(\`User \${userId} logged in at \${timestamp}\`);
+  });
 
-emitter.on("login", ({ userId, timestamp }) => {
-  console.log(\`User \${userId} logged in at \${timestamp}\`);
-});
+  emitter.emit("login", { userId: "u123", timestamp: new Date() });
+  // emitter.emit("login", { userId: 42 }); // Error! userId must be string
 
-emitter.emit("login", { userId: "u123", timestamp: new Date() });
-// emitter.emit("login", { userId: 42 }); // Error! userId must be string
 \`\`\`
 
 ## Common Pitfalls
