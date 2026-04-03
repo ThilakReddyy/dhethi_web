@@ -93,7 +93,12 @@
     font-family: 'Merriweather', Georgia, serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     @apply font-bold tracking-tight text-foreground;
   }
@@ -105,47 +110,48 @@
   .prose {
     @apply text-foreground leading-relaxed;
   }
-  
+
   .prose h2 {
     @apply text-2xl font-bold mt-10 mb-4;
   }
-  
+
   .prose h3 {
     @apply text-xl font-bold mt-8 mb-3;
   }
-  
+
   .prose p {
     @apply mb-5 leading-8;
   }
-  
-  .prose ul, .prose ol {
+
+  .prose ul,
+  .prose ol {
     @apply mb-5 pl-6;
   }
-  
+
   .prose li {
     @apply mb-2 leading-7;
   }
-  
+
   .prose ul li {
     @apply list-disc;
   }
-  
+
   .prose ol li {
     @apply list-decimal;
   }
-  
+
   .prose code {
     @apply bg-muted text-primary px-1.5 py-0.5 rounded text-sm font-mono;
   }
-  
+
   .prose pre {
-    @apply bg-muted rounded-lg p-4 mb-5 overflow-x-auto;
+    @apply bg-muted rounded-lg overflow-x-auto;
   }
-  
+
   .prose pre code {
     @apply bg-transparent p-0;
   }
-  
+
   .prose blockquote {
     @apply border-l-4 border-primary pl-4 italic text-muted-foreground my-6;
   }

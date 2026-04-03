@@ -6096,10 +6096,11 @@ Anthropic launched Claude Opus 4.6 on February 5, 2026, followed by Claude Sonne
 
 The pricing is straightforward:
 
-| Model | Input (per 1M tokens) | Output (per 1M tokens) |
-|---|---|---|
-| Claude Opus 4.6 | $5.00 | $25.00 |
-| Claude Sonnet 4.6 | $3.00 | $15.00 |
+| Model             | Input (per 1M tokens) | Output (per 1M tokens) |
+| ----------------- | --------------------- | ---------------------- |
+| Claude Opus 4.6   | $5.00                 | $25.00                 |
+| Claude Sonnet 4.6 | $3.00                 | $15.00                 |
+
 
 Two cost optimizations are also available. Prompt caching can cut costs by up to 90 percent on repeated context, and the Batch API offers a 50 percent discount on asynchronous workloads. If your application re-sends large system prompts repeatedly, these features alone can make a previously unprofitable product viable.
 
@@ -6140,13 +6141,17 @@ In the left sidebar, click **API Keys → Create Key**. Give it a descriptive na
 For Node.js and TypeScript projects:
 
 \`\`\`bash
-npm install @anthropic-ai/sdk
+
+  npm install @anthropic-ai/sdk
+
 \`\`\`
 
 For Python projects:
 
 \`\`\`bash
-pip install anthropic
+
+  pip install anthropic
+
 \`\`\`
 
 ### Step 5: Make Your First API Call
@@ -6154,35 +6159,39 @@ pip install anthropic
 Here is a minimal Node.js example that calls Claude Sonnet 4.6:
 
 \`\`\`javascript 
-import Anthropic from "@anthropic-ai/sdk";
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-async function main() {
-  const message = await client.messages.create({
-    model: "claude-sonnet-4-6",
-    max_tokens: 1024,
-    messages: [
-      {
-        role: "user",
-        content: "Explain how compound interest works in two sentences.",
-      },
-    ],
-  });
-  console.log(message.content[0]);
-}
-main();
+
+  import Anthropic from "@anthropic-ai/sdk";
+  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+  async function main() {
+    const message = await client.messages.create({
+      model: "claude-sonnet-4-6",
+      max_tokens: 1024,
+      messages: [
+        {
+          role: "user",
+          content: "Explain how compound interest works in two sentences.",
+        },
+      ],
+    });
+    console.log(message.content[0]);
+  }
+  main();
+
 \`\`\`
 
 And the Python equivalent:
 
 \`\`\`python
-import anthropic
-client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from env
-message = client.messages.create(
+
+  import anthropic
+  client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from env
+  message = client.messages.create(
     model="claude-sonnet-4-6",
     max_tokens=1024,
     messages=[{"role": "user", "content": "Explain compound interest in two sentences."}],
-)
-print(message.content[0].text)
+    )
+  print(message.content[0].text)
+
 \`\`\`
 
 Both examples will produce a response within seconds. You are now integrated with one of the most powerful AI APIs in the world.
@@ -6192,18 +6201,20 @@ Both examples will produce a response within seconds. You are now integrated wit
 The 1-million-token context window is available by default on Opus 4.6 and Sonnet 4.6. A practical way to use it:
 
 \`\`\`typescript
-const response = await client.messages.create({
-  model: "claude-sonnet-4-6",
-  max_tokens: 4096,
-  system: "You are a financial analyst. Analyze the following annual reports thoroughly.",
-  messages: [
-    {
-      role: "user",
-      // You can now pass entire codebases, legal documents, or full books here
-      content: massiveDocumentString,
-    },
-  ],
-});
+
+  const response = await client.messages.create({
+    model: "claude-sonnet-4-6",
+    max_tokens: 4096,
+    system: "You are a financial analyst. Analyze the following annual reports thoroughly.",
+    messages: [
+      {
+        role: "user",
+        // You can now pass entire codebases, legal documents, or full books here
+        content: massiveDocumentString,
+      },
+    ],
+  });
+  
 \`\`\`
 
 ### Step 7: Cut Costs with Prompt Caching
@@ -6211,18 +6222,20 @@ const response = await client.messages.create({
 If your application sends the same large system prompt or document repeatedly, enable prompt caching:
 
 \`\`\`typescript
-const response = await client.messages.create({
-  model: "claude-sonnet-4-6",
-  max_tokens: 1024,
-  system: [
-    {
-      type: "text",
-      text: "You are a legal document analyst...",
-      cache_control: { type: "ephemeral" }, // This section is cached
-    },
-  ],
-  messages: [{ role: "user", content: userQuestion }],
-});
+
+  const response = await client.messages.create({
+    model: "claude-sonnet-4-6",
+    max_tokens: 1024,
+    system: [
+      {
+        type: "text",
+        text: "You are a legal document analyst...",
+        cache_control: { type: "ephemeral" }, // This section is cached
+      },
+    ],
+    messages: [{ role: "user", content: userQuestion }],
+  });
+
 \`\`\`
 
 Cached tokens cost 90 percent less than standard input tokens, turning expensive repeated calls into affordable ones.
