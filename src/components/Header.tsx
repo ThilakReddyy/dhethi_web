@@ -43,16 +43,6 @@ const Header = () => {
           ))}
         </nav>
 
-        <a
-          className="header-product"
-          href="https://jntuhconnect.dhethi.com/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Open product
-          <ArrowUpRight size={15} aria-hidden="true" />
-        </a>
-
         <button
           className="menu-button"
           type="button"
@@ -74,14 +64,6 @@ const Header = () => {
                 <ArrowUpRight size={17} aria-hidden="true" />
               </a>
             ))}
-            <a
-              href="https://jntuhconnect.dhethi.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Open JNTUH Connect
-              <ArrowUpRight size={17} aria-hidden="true" />
-            </a>
           </div>
         </nav>
       )}
