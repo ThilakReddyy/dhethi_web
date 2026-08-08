@@ -1,40 +1,42 @@
 import { useEffect } from "react";
 
-interface SEOHeadProps {
+type SEOHeadProps = {
   title: string;
   description: string;
   canonical?: string;
-  type?: string;
-  article?: {
-    publishedTime?: string;
-    author?: string;
-    tags?: string[];
-  };
-}
+};
 
-const SEOHead = ({ title, description, canonical, type = "website", article }: SEOHeadProps) => {
+const setMeta = (key: string, content: string, property = false) => {
+  const attribute = property ? "property" : "name";
+  let element = document.querySelector(`meta[${attribute}="${key}"]`);
+
+  if (!element) {
+    element = document.createElement("meta");
+    element.setAttribute(attribute, key);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute("content", content);
+};
+
+const SEOHead = ({ title, description, canonical }: SEOHeadProps) => {
   useEffect(() => {
-    document.title = `${title} | Dhethi`;
-    
-    const setMeta = (name: string, content: string, isProperty = false) => {
-      const attr = isProperty ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
+    document.title = title;
     setMeta("description", description);
     setMeta("og:title", title, true);
     setMeta("og:description", description, true);
-    setMeta("og:type", type, true);
+    setMeta("og:type", "website", true);
     setMeta("og:site_name", "Dhethi", true);
+    setMeta("og:image", "https://dhethi.com/og.png", true);
+    setMeta("og:image:alt", title, true);
+    setMeta("twitter:title", title);
+    setMeta("twitter:description", description);
+    setMeta("twitter:image", "https://dhethi.com/og.png");
+    setMeta("twitter:image:alt", title);
+
     if (canonical) {
       setMeta("og:url", canonical, true);
-      let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+      let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
       if (!link) {
         link = document.createElement("link");
         link.rel = "canonical";
@@ -42,12 +44,7 @@ const SEOHead = ({ title, description, canonical, type = "website", article }: S
       }
       link.href = canonical;
     }
-
-    if (article) {
-      if (article.publishedTime) setMeta("article:published_time", article.publishedTime, true);
-      if (article.author) setMeta("article:author", article.author, true);
-    }
-  }, [title, description, canonical, type, article]);
+  }, [canonical, description, title]);
 
   return null;
 };

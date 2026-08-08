@@ -1,23 +1,22 @@
-import { useLocation } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { useEffect } from "react";
 
 const NotFound = () => {
-  const location = useLocation();
-
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
+    document.title = "Page not found — Dhethi";
+  }, []);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
+    <main className="not-found">
+      <a href="/" className="wordmark" aria-label="Dhethi home">dhethi<span>.</span></a>
+      <div>
+        <p>404 / Off the map</p>
+        <h1>This product surface doesn’t exist.</h1>
+        <a className="button button-primary" href="/">
+          <ArrowLeft size={18} aria-hidden="true" /> Back to Dhethi
         </a>
       </div>
-    </div>
+    </main>
   );
 };
 

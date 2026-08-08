@@ -1,0 +1,24 @@
+# Dhethi
+
+> Dhethi is an independent product brand creating practical digital tools that are designed, shipped, and operated for real use.
+
+## Product
+
+- [JNTUH Connect](https://jntuhconnect.dhethi.com/): A student utility spanning web, API, native Android, and native iOS experiences.
+- [Google Play](https://play.google.com/store/apps/details?id=com.dhethi.jntuhconnect)
+- [Apple App Store](https://apps.apple.com/in/app/jntuh-connect/id6790828236)
+
+## Product impact
+
+- 4K+ daily active users.
+- 22K+ API calls per day.
+- 10K+ Google Play downloads.
+- 12+ academic and career tools.
+- Complete production footprint operated for under $14 per month.
+
+## Product principles
+
+- Start with a real, repeated problem.
+- Own the complete path from interface to operations.
+- Keep products dependable and economical to run.
+- Improve through production signals and user feedback.

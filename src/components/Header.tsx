@@ -1,68 +1,90 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "#product", label: "Product" },
+  { href: "#principles", label: "Principles" },
+  { href: "#brand", label: "Why Dhethi" },
+  { href: "#notes", label: "Notes" },
 ];
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const updateHeader = () => setScrolled(window.scrollY > 12);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [isOpen]);
 
   return (
-    <header className="border-b border-border bg-card sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-xl font-bold font-sans text-foreground tracking-tight">
-            dhethi<span className="text-primary">.com</span>
-          </Link>
+    <header className={scrolled ? "site-header site-header-scrolled" : "site-header"}>
+      <div className="shell header-inner">
+        <a href="#top" className="wordmark" aria-label="Dhethi, back to top">
+          dhethi<span>.</span>
+        </a>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={`font-sans text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === link.href ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-muted-foreground hover:text-foreground"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
+        <a
+          className="header-product"
+          href="https://jntuhconnect.dhethi.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open product
+          <ArrowUpRight size={15} aria-hidden="true" />
+        </a>
 
-        {isOpen && (
-          <nav className="md:hidden pb-4 border-t border-border pt-4 flex flex-col gap-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`font-sans text-sm font-medium px-2 py-1.5 rounded transition-colors ${
-                  location.pathname === link.href
-                    ? "text-primary bg-secondary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        )}
+        <button
+          className="menu-button"
+          type="button"
+          onClick={() => setIsOpen((open) => !open)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          aria-label={isOpen ? "Close navigation" : "Open navigation"}
+        >
+          {isOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+        </button>
       </div>
+
+      {isOpen && (
+        <nav id="mobile-menu" className="mobile-nav" aria-label="Mobile navigation">
+          <div className="shell">
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href} onClick={() => setIsOpen(false)}>
+                {link.label}
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+            ))}
+            <a
+              href="https://jntuhconnect.dhethi.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open JNTUH Connect
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          </div>
+        </nav>
+      )}
     </header>
   );
 };

@@ -1,0 +1,10 @@
+{
+  "name": "Dhethi",
+  "short_name": "Dhethi",
+  "description": "Useful software, built all the way through.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3efe6",
+  "theme_color": "#f3efe6",
+  "lang": "en-IN"
+}
