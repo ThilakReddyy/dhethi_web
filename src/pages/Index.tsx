@@ -13,6 +13,8 @@ import {
   Gauge,
   Github,
   Globe2,
+  Instagram,
+  Mail,
   Server,
   Smartphone,
   Users,
@@ -395,21 +397,37 @@ const Index = () => {
 
       <section id="contact" className="contact-section">
         <div className="shell contact-inner">
-          <p className="section-kicker">What comes next</p>
-          <h2>One live product. More useful work ahead.</h2>
+          <p className="section-kicker">Let&apos;s talk</p>
+          <h2>Got an idea? Need something built?</h2>
           <p>
-            Dhethi is focused on building and operating practical digital products.
-            New releases and experiments will appear here when they are ready.
+            Tell us the problem worth solving — two lines is enough. We reply
+            personally and only take on work we can build all the way through.
+            Collaborations welcome, especially if you&apos;re a student with a
+            real idea and no team yet.
           </p>
-          <a
-            className="button button-invert"
-            href="https://jntuhconnect.dhethi.com/"
-            target="_blank"
-            rel="noreferrer"
+          <div
+            className="hero-actions"
+            style={{ justifyContent: "center", marginTop: "2.4rem" }}
           >
-            Explore JNTUH Connect
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
+            <a
+              className="button button-invert"
+              href="mailto:thilakreddy@dhethi.com?subject=Hi%20Dhethi%20%E2%80%94%20I%20have%20an%20idea"
+            >
+              <Mail size={18} aria-hidden="true" />
+              thilakreddy@dhethi.com
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+            <a
+              className="button button-quiet"
+              href="https://www.instagram.com/__thilak_reddy__/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Instagram size={18} aria-hidden="true" />
+              DM on Instagram
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </section>
     </Layout>
