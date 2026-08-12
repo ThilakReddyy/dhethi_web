@@ -313,6 +313,7 @@ a:focus-visible {
 
 .button-quiet {
   background: var(--paper-bright);
+  color: var(--ink);
 }
 
 .button-invert {
