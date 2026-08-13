@@ -18,7 +18,39 @@ import {
   Server,
   Smartphone,
   Users,
+  Bot,
+  Zap,
 } from "lucide-react";
+
+const services = [
+  {
+    number: "01",
+    icon: Bot,
+    title: "AI Integration",
+    headline: "AI that does something useful",
+    description:
+      "LLM integrations, agents, RAG pipelines, and AI features built to run in production — not just proof-of-concepts.",
+    tags: ["LLM Integration", "AI Agents", "RAG", "OpenAI · Claude · Gemini"],
+  },
+  {
+    number: "02",
+    icon: Smartphone,
+    title: "Web & Mobile",
+    headline: "Products people actually use",
+    description:
+      "React web apps, Android, and iOS — designed and built together so nothing gets lost between design and code.",
+    tags: ["React / Next.js", "Android", "iOS", "UI/UX Design"],
+  },
+  {
+    number: "03",
+    icon: Zap,
+    title: "Automation",
+    headline: "Repetitive work, automated",
+    description:
+      "Custom pipelines, scheduled jobs, and workflow automation that replaces manual processes with something dependable.",
+    tags: ["FastAPI", "Data Pipelines", "Workflow Automation", "Scraping & Scheduling"],
+  },
+];
 
 const productSurfaces = [
   {
@@ -273,6 +305,52 @@ const Index = () => {
               </a>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section id="services" className="services-section section-pad">
+        <div className="shell">
+          <div className="section-heading">
+            <div>
+              <p className="section-kicker">What we build</p>
+              <h2>Two builders. Three service lines.</h2>
+            </div>
+            <p>
+              We combine advanced AI intelligence with beautiful user design.
+              Dheeraj engineers the smart systems, while Thilak builds the
+              seamless web and mobile apps. Together, we take your problem from
+              an idea to a fully running, automated product.
+            </p>
+          </div>
+
+          <div className="service-grid">
+            {services.map(({ number, icon: Icon, title, headline, description, tags }) => (
+              <article className="service-card" key={number}>
+                <div className="service-card-head">
+                  <span className="service-number">{number}</span>
+                  <span className="service-icon-wrap">
+                    <Icon size={20} aria-hidden="true" />
+                  </span>
+                </div>
+                <p className="service-label">{title}</p>
+                <h3>{headline}</h3>
+                <p className="service-desc">{description}</p>
+                <div className="service-tags">
+                  {tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="service-cta">
+            <p>Got a project in mind?</p>
+            <a href="#contact" className="button button-primary">
+              Let's talk about it
+              <ArrowRight size={17} aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </section>
 

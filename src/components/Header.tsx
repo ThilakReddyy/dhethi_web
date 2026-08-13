@@ -3,6 +3,7 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "#product", label: "Product" },
+  { href: "#services", label: "Services" },
   { href: "#principles", label: "Principles" },
   { href: "#brand", label: "Why Dhethi" },
   { href: "#notes", label: "Notes" },
@@ -43,6 +44,10 @@ const Header = () => {
           ))}
         </nav>
 
+        <a href="#contact" className="lets-talk-btn">
+          Let's Talk
+        </a>
+
         <button
           className="menu-button"
           type="button"
@@ -64,6 +69,10 @@ const Header = () => {
                 <ArrowUpRight size={17} aria-hidden="true" />
               </a>
             ))}
+            <a href="#contact" onClick={() => setIsOpen(false)}>
+              Let's Talk
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
           </div>
         </nav>
       )}
