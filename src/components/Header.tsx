@@ -30,7 +30,9 @@ const Header = () => {
   }, [isOpen]);
 
   return (
-    <header className={scrolled ? "site-header site-header-scrolled" : "site-header"}>
+    <header
+      className={scrolled ? "site-header site-header-scrolled" : "site-header"}
+    >
       <div className="shell header-inner">
         <a href="#top" className="wordmark" aria-label="Dhethi, back to top">
           dhethi<span>.</span>
@@ -44,8 +46,9 @@ const Header = () => {
           ))}
         </nav>
 
-        <a href="#contact" className="lets-talk-btn">
+        <a href="#contact" className="lets-talk-btn hidden lg:inline-flex">
           Let's Talk
+          <ArrowUpRight size={15} aria-hidden="true" />
         </a>
 
         <button
@@ -56,15 +59,27 @@ const Header = () => {
           aria-controls="mobile-menu"
           aria-label={isOpen ? "Close navigation" : "Open navigation"}
         >
-          {isOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+          {isOpen ? (
+            <X size={22} aria-hidden="true" />
+          ) : (
+            <Menu size={22} aria-hidden="true" />
+          )}
         </button>
       </div>
 
       {isOpen && (
-        <nav id="mobile-menu" className="mobile-nav" aria-label="Mobile navigation">
+        <nav
+          id="mobile-menu"
+          className="mobile-nav"
+          aria-label="Mobile navigation"
+        >
           <div className="shell">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} onClick={() => setIsOpen(false)}>
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+              >
                 {link.label}
                 <ArrowUpRight size={17} aria-hidden="true" />
               </a>

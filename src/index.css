@@ -106,7 +106,7 @@ a:focus-visible {
 
 .header-inner {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 2rem;
   min-height: 78px;
@@ -163,21 +163,30 @@ a:focus-visible {
 }
 
 .lets-talk-btn {
-  font-size: 0.78rem;
-  font-weight: 850;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--orange);
-  border: 1.5px solid var(--orange);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  align-items: center;
+  justify-self: end;
+  gap: 0.35rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--ink);
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 800;
   white-space: nowrap;
-  transition: background 160ms ease, color 160ms ease;
+  transition: color 160ms ease, border-color 160ms ease, gap 160ms ease;
+}
+
+.lets-talk-btn svg {
+  color: var(--orange);
+  transition: transform 160ms ease;
 }
 
 .lets-talk-btn:hover {
-  background: var(--orange);
-  color: var(--white);
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.lets-talk-btn:hover svg {
+  transform: translate(2px, -2px);
 }
 
 .menu-button,
