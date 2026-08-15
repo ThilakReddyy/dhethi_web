@@ -513,6 +513,10 @@ a:focus-visible {
   line-height: 1.75;
 }
 
+.section-heading-solo {
+  grid-template-columns: 1fr;
+}
+
 .product-section {
   background: var(--paper-bright);
 }
@@ -1012,6 +1016,12 @@ a:focus-visible {
   color: var(--muted);
   font-size: 0.69rem;
   line-height: 1.45;
+}
+
+.builder-copy .builder-ownership {
+  margin-top: 2rem;
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .builder-proof strong {

@@ -118,13 +118,6 @@ const notes = [
     href: "https://thilakreddy.medium.com/how-i-scaled-jntuh-results-vercel-from-a-simple-script-to-22k-api-calls-daily-e3e3052fff32",
   },
   {
-    topic: "Algorithms",
-    title: "Three tree traversals in one recursive pass",
-    description:
-      "A compact technique for producing preorder, inorder, and postorder traversals together.",
-    href: "https://www.geeksforgeeks.org/dsa/pre-order-post-order-and-in-order-traversal-of-a-binary-tree-in-one-traversal-using-recursion/",
-  },
-  {
     topic: "Automation",
     title: "Building useful automation with Postman",
     description:
@@ -310,17 +303,11 @@ const Index = () => {
 
       <section id="services" className="services-section section-pad">
         <div className="shell">
-          <div className="section-heading">
+          <div className="section-heading section-heading-solo">
             <div>
               <p className="section-kicker">What we build</p>
               <h2>Two builders. Three service lines.</h2>
             </div>
-            <p>
-              We combine advanced AI intelligence with beautiful user design.
-              Dheeraj engineers the smart systems, while Thilak builds the
-              seamless web and mobile apps. Together, we take your problem from
-              an idea to a fully running, automated product.
-            </p>
           </div>
 
           <div className="service-grid">
@@ -342,14 +329,6 @@ const Index = () => {
                 </div>
               </article>
             ))}
-          </div>
-
-          <div className="service-cta">
-            <p>Got a project in mind?</p>
-            <a href="#contact" className="button button-primary">
-              Let's talk about it
-              <ArrowRight size={17} aria-hidden="true" />
-            </a>
           </div>
         </div>
       </section>
@@ -419,6 +398,13 @@ const Index = () => {
                 <span>Ownership<br /><strong>Built to keep running</strong></span>
               </div>
             </div>
+
+            <p className="builder-ownership">
+              We don't assume we're the smartest team in the room. But we know
+              we're one of the most reliable. Skills can be trained.
+              Experience can be gained. What's harder to teach is ownership.
+              If something has the Dhethi name on it, it gets done properly.
+            </p>
 
             <div className="builder-links">
               <a
