@@ -48,7 +48,12 @@ const services = [
     headline: "Repetitive work, automated",
     description:
       "Custom pipelines, scheduled jobs, and workflow automation that replaces manual processes with something dependable.",
-    tags: ["FastAPI", "Data Pipelines", "Workflow Automation", "Scraping & Scheduling"],
+    tags: [
+      "FastAPI",
+      "Data Pipelines",
+      "Workflow Automation",
+      "Scraping & Scheduling",
+    ],
   },
 ];
 
@@ -130,7 +135,7 @@ const Index = () => {
   return (
     <Layout>
       <SEOHead
-        title="Dhethi — Useful software, built all the way through"
+        title="Dhethi - Useful software, built all the way through"
         description="Dhethi is an independent product brand creating practical web, mobile, backend, and platform software. Home of JNTUH Connect."
         canonical="https://dhethi.com/"
       />
@@ -159,17 +164,17 @@ const Index = () => {
                 Explore the flagship
                 <ArrowRight size={18} aria-hidden="true" />
               </a>
-              <a
-                className="button button-quiet"
-                href="#principles"
-              >
+              <a className="button button-quiet" href="#principles">
                 How Dhethi builds
                 <ArrowRight size={17} aria-hidden="true" />
               </a>
             </div>
           </div>
 
-          <div className="hero-object reveal reveal-delay" aria-label="Dhethi product system">
+          <div
+            className="hero-object reveal reveal-delay"
+            aria-label="Dhethi product system"
+          >
             <div className="object-label">
               <span>Now operating</span>
               <strong>01 live product</strong>
@@ -177,7 +182,10 @@ const Index = () => {
             <div className="object-core">
               <span className="object-mark">d.</span>
               <span className="object-ring" aria-hidden="true" />
-              <span className="object-ring object-ring-two" aria-hidden="true" />
+              <span
+                className="object-ring object-ring-two"
+                aria-hidden="true"
+              />
             </div>
             <div className="object-footer">
               <span>Web</span>
@@ -190,11 +198,16 @@ const Index = () => {
 
         <div className="hero-ticker" aria-label="Dhethi capabilities">
           <div className="ticker-track">
-            <span>PRODUCT ENGINEERING</span><i />
-            <span>NATIVE MOBILE</span><i />
-            <span>BACKEND SYSTEMS</span><i />
-            <span>RELEASE AUTOMATION</span><i />
-            <span>PRODUCTION OPERATIONS</span><i />
+            <span>PRODUCT ENGINEERING</span>
+            <i />
+            <span>NATIVE MOBILE</span>
+            <i />
+            <span>BACKEND SYSTEMS</span>
+            <i />
+            <span>RELEASE AUTOMATION</span>
+            <i />
+            <span>PRODUCTION OPERATIONS</span>
+            <i />
           </div>
         </div>
       </section>
@@ -207,29 +220,34 @@ const Index = () => {
               <h2>A student utility became a complete product system.</h2>
             </div>
             <p>
-              JNTUH Connect started with one recurring problem: getting university
-              results without friction. It now brings 12+ academic and career tools
-              together across four production surfaces.
+              JNTUH Connect started with one recurring problem: getting
+              university results without friction. It now brings 12+ academic
+              and career tools together across four production surfaces.
             </p>
           </div>
 
           <article className="product-card">
             <div className="product-topline">
               <div className="product-identity">
-                <span className="product-icon" aria-hidden="true">JC</span>
+                <span className="product-icon" aria-hidden="true">
+                  JC
+                </span>
                 <div>
                   <p>Independently built &amp; operated</p>
                   <h3>JNTUH Connect</h3>
                 </div>
               </div>
-              <span className="live-pill"><span /> Live in production</span>
+              <span className="live-pill">
+                <span /> Live in production
+              </span>
             </div>
 
             <div className="product-main">
               <div className="product-story">
                 <p className="product-intro">
                   Results, credits, backlogs, resources, rankings, careers, and
-                  university updates—designed for the students who use them every day.
+                  university updates—designed for the students who use them
+                  every day.
                 </p>
                 <div className="product-links">
                   <a
@@ -237,7 +255,8 @@ const Index = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Open the web product <ArrowUpRight size={17} aria-hidden="true" />
+                    Open the web product{" "}
+                    <ArrowUpRight size={17} aria-hidden="true" />
                   </a>
                   <a
                     href="https://play.google.com/store/apps/details?id=com.dhethi.jntuhconnect"
@@ -285,8 +304,8 @@ const Index = () => {
                 <Cloud size={20} aria-hidden="true" />
                 <p>
                   <strong>Lean production economics</strong>
-                  The complete AWS, Cloudflare, web, API, and app-store footprint
-                  operates for under $14 per month.
+                  The complete AWS, Cloudflare, web, API, and app-store
+                  footprint operates for under $14 per month.
                 </p>
               </div>
               <a
@@ -311,24 +330,26 @@ const Index = () => {
           </div>
 
           <div className="service-grid">
-            {services.map(({ number, icon: Icon, title, headline, description, tags }) => (
-              <article className="service-card" key={number}>
-                <div className="service-card-head">
-                  <span className="service-number">{number}</span>
-                  <span className="service-icon-wrap">
-                    <Icon size={20} aria-hidden="true" />
-                  </span>
-                </div>
-                <p className="service-label">{title}</p>
-                <h3>{headline}</h3>
-                <p className="service-desc">{description}</p>
-                <div className="service-tags">
-                  {tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-              </article>
-            ))}
+            {services.map(
+              ({ number, icon: Icon, title, headline, description, tags }) => (
+                <article className="service-card" key={number}>
+                  <div className="service-card-head">
+                    <span className="service-number">{number}</span>
+                    <span className="service-icon-wrap">
+                      <Icon size={20} aria-hidden="true" />
+                    </span>
+                  </div>
+                  <p className="service-label">{title}</p>
+                  <h3>{headline}</h3>
+                  <p className="service-desc">{description}</p>
+                  <div className="service-tags">
+                    {tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </article>
+              ),
+            )}
           </div>
         </div>
       </section>
@@ -357,10 +378,19 @@ const Index = () => {
           </div>
 
           <div className="stack-line">
-            <div><Code2 size={18} aria-hidden="true" /> React &amp; Next.js</div>
-            <div><Server size={18} aria-hidden="true" /> FastAPI &amp; Java</div>
-            <div><Boxes size={18} aria-hidden="true" /> Postgres, Redis &amp; queues</div>
-            <div><Cloud size={18} aria-hidden="true" /> AWS &amp; Cloudflare</div>
+            <div>
+              <Code2 size={18} aria-hidden="true" /> React &amp; Next.js
+            </div>
+            <div>
+              <Server size={18} aria-hidden="true" /> FastAPI &amp; Java
+            </div>
+            <div>
+              <Boxes size={18} aria-hidden="true" /> Postgres, Redis &amp;
+              queues
+            </div>
+            <div>
+              <Cloud size={18} aria-hidden="true" /> AWS &amp; Cloudflare
+            </div>
           </div>
         </div>
       </section>
@@ -370,40 +400,54 @@ const Index = () => {
           <div className="builder-title">
             <p className="section-kicker">Why Dhethi</p>
             <h2>A home for products that earn their place.</h2>
-            <div className="builder-mark" aria-hidden="true">d.</div>
+            <div className="builder-mark" aria-hidden="true">
+              d.
+            </div>
           </div>
 
           <div className="builder-copy">
             <p className="builder-lede">
-              Dhethi is a standalone product brand for focused digital tools that
-              solve specific, repeated problems.
+              Dhethi is a standalone product brand for focused digital tools
+              that solve specific, repeated problems.
             </p>
             <p>
-              Each product is expected to be clear, dependable, economical to run,
-              and useful beyond its launch day. JNTUH Connect is the first complete
-              expression of that standard.
+              Each product is expected to be clear, dependable, economical to
+              run, and useful beyond its launch day. JNTUH Connect is the first
+              complete expression of that standard.
             </p>
 
             <div className="builder-proof">
               <div>
                 <Compass size={20} aria-hidden="true" />
-                <span>Purpose<br /><strong>Practical problems first</strong></span>
+                <span>
+                  Purpose
+                  <br />
+                  <strong>Practical problems first</strong>
+                </span>
               </div>
               <div>
                 <Gauge size={20} aria-hidden="true" />
-                <span>Standard<br /><strong>Fast and dependable</strong></span>
+                <span>
+                  Standard
+                  <br />
+                  <strong>Fast and dependable</strong>
+                </span>
               </div>
               <div>
                 <Cloud size={20} aria-hidden="true" />
-                <span>Ownership<br /><strong>Built to keep running</strong></span>
+                <span>
+                  Ownership
+                  <br />
+                  <strong>Built to keep running</strong>
+                </span>
               </div>
             </div>
 
             <p className="builder-ownership">
               We don't assume we're the smartest team in the room. But we know
-              we're one of the most reliable. Skills can be trained.
-              Experience can be gained. What's harder to teach is ownership.
-              If something has the Dhethi name on it, it gets done properly.
+              we're one of the most reliable. Skills can be trained. Experience
+              can be gained. What's harder to teach is ownership. If something
+              has the Dhethi name on it, it gets done properly.
             </p>
 
             <div className="builder-links">
@@ -445,7 +489,12 @@ const Index = () => {
 
           <div className="notes-list">
             {notes.map((note, index) => (
-              <a href={note.href} target="_blank" rel="noreferrer" key={note.href}>
+              <a
+                href={note.href}
+                target="_blank"
+                rel="noreferrer"
+                key={note.href}
+              >
                 <span className="note-index">0{index + 1}</span>
                 <span className="note-topic">{note.topic}</span>
                 <span className="note-copy">
