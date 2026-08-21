@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import SEOHead from "@/components/SEOHead";
 import {
@@ -9,11 +10,13 @@ import {
   Cloud,
   Code2,
   Compass,
+  Database,
   Download,
   Gauge,
   Github,
   Globe2,
   Instagram,
+  Linkedin,
   Mail,
   Server,
   Smartphone,
@@ -29,7 +32,7 @@ const services = [
     title: "AI Integration",
     headline: "AI that does something useful",
     description:
-      "LLM integrations, agents, RAG pipelines, and AI features built to run in production — not just proof-of-concepts.",
+      "LLM integrations, agents, RAG pipelines, and AI features built to run in production, not just proof-of-concepts.",
     tags: ["LLM Integration", "AI Agents", "RAG", "OpenAI · Claude · Gemini"],
   },
   {
@@ -38,7 +41,7 @@ const services = [
     title: "Web & Mobile",
     headline: "Products people actually use",
     description:
-      "React web apps, Android, and iOS — designed and built together so nothing gets lost between design and code.",
+      "React web apps, Android, and iOS, designed and built together so nothing gets lost between design and code.",
     tags: ["React / Next.js", "Android", "iOS", "UI/UX Design"],
   },
   {
@@ -57,34 +60,85 @@ const services = [
   },
 ];
 
-const productSurfaces = [
+const products = [
   {
-    icon: Globe2,
-    label: "Web",
-    detail: "Next.js product experience",
+    id: "jntuh-connect",
+    tag: "JC",
+    name: "JNTUH Connect",
+    kicker: "Product 01 · Live",
+    heading: "A student utility became a complete product system.",
+    intro:
+      "JNTUH Connect started with one recurring problem: getting university results without friction. It now brings 12+ academic and career tools together across four production surfaces.",
+    eyebrow: "Independently built & operated",
+    story:
+      "Results, credits, backlogs, resources, rankings, careers, and university updates, designed for the students who use them every day.",
+    links: [
+      {
+        label: "Open the web product",
+        href: "https://jntuhconnect.dhethi.com/",
+      },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.dhethi.jntuhconnect",
+      },
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/in/app/jntuh-connect/id6790828236",
+      },
+    ],
+    metrics: [
+      { icon: Users, value: "4K+", label: "daily active users" },
+      { icon: Activity, value: "22K+", label: "daily API calls" },
+      { icon: Download, value: "10K+", label: "Play downloads" },
+      { icon: Gauge, value: "<40ms", label: "cached responses" },
+    ],
+    surfaces: [
+      { icon: Globe2, label: "Web", detail: "Next.js product experience" },
+      { icon: Server, label: "API", detail: "FastAPI services and automation" },
+      { icon: Smartphone, label: "Android", detail: "Native Kotlin and Compose" },
+      { icon: Smartphone, label: "iOS", detail: "Native Swift and SwiftUI" },
+    ],
+    foot: {
+      icon: Cloud,
+      title: "Lean production economics",
+      text: "The complete AWS, Cloudflare, web, API, and app-store footprint operates for under $14 per month.",
+      link: {
+        label: "View source",
+        href: "https://github.com/ThilakReddyy/JNTUHRESULTS-WEB",
+      },
+    },
   },
   {
-    icon: Server,
-    label: "API",
-    detail: "FastAPI services and automation",
+    id: "bhubharati-explorer",
+    tag: "BB",
+    name: "BhuBharati Explorer",
+    kicker: "Product 02 · Live",
+    heading: "Public land records, made searchable.",
+    intro:
+      "BhuBharati Explorer turns Telangana's public land-record portal into a guided search, district to mandal to village to record, with live streaming and exportable results.",
+    eyebrow: "Independently built & operated",
+    story:
+      "Search, filter, sort, and export survey and Khata records, with Telugu owner names searchable by English pronunciation and real progress streaming instead of a simulated loading bar.",
+    links: [
+      {
+        label: "Open the web product",
+        href: "https://bhubharati.dhethi.com/",
+      },
+    ],
+    metrics: [{ icon: Users, value: "200+", label: "daily active users" }],
+    surfaces: [
+      { icon: Globe2, label: "Web", detail: "Guided district to mandal to village search" },
+      { icon: Server, label: "API", detail: "FastAPI backend with live SSE streaming" },
+      { icon: Boxes, label: "MCP Server", detail: "12 tools for AI clients over streamable HTTP" },
+      { icon: Database, label: "Database", detail: "PostgreSQL-backed hierarchy cache" },
+    ],
+    foot: {
+      icon: Compass,
+      title: "Unofficial and read-only",
+      text: "Public portal data, made understandable. Verify anything consequential against the official source.",
+      link: null,
+    },
   },
-  {
-    icon: Smartphone,
-    label: "Android",
-    detail: "Native Kotlin and Compose",
-  },
-  {
-    icon: Smartphone,
-    label: "iOS",
-    detail: "Native Swift and SwiftUI",
-  },
-];
-
-const productMetrics = [
-  { icon: Users, value: "4K+", label: "daily active users" },
-  { icon: Activity, value: "22K+", label: "daily API calls" },
-  { icon: Download, value: "10K+", label: "Play downloads" },
-  { icon: Gauge, value: "<40ms", label: "cached responses" },
 ];
 
 const principles = [
@@ -92,7 +146,7 @@ const principles = [
     number: "01",
     title: "Start with a real problem",
     description:
-      "Build for a specific person and a repeated frustration—not for a feature checklist.",
+      "Build for a specific person and a repeated frustration, not for a feature checklist.",
   },
   {
     number: "02",
@@ -104,7 +158,7 @@ const principles = [
     number: "03",
     title: "Operate what ships",
     description:
-      "Reliability, observability, cost, and user feedback are part of the build—not an afterthought.",
+      "Reliability, observability, cost, and user feedback are part of the build, not an afterthought.",
   },
   {
     number: "04",
@@ -132,11 +186,14 @@ const notes = [
 ];
 
 const Index = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeProduct = products[activeIndex];
+
   return (
     <Layout>
       <SEOHead
         title="Dhethi - Useful software, built all the way through"
-        description="Dhethi is an independent product brand creating practical web, mobile, backend, and platform software. Home of JNTUH Connect."
+        description="Dhethi is an independent product brand creating practical web, mobile, backend, and platform software. Home of JNTUH Connect and BhuBharati Explorer."
         canonical="https://dhethi.com/"
       />
 
@@ -157,7 +214,7 @@ const Index = () => {
             </h1>
             <p className="hero-lede">
               Dhethi turns practical problems into dependable web, mobile, and
-              backend products—then keeps them fast, useful, and running.
+              backend products, then keeps them fast, useful, and running.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#product">
@@ -177,7 +234,7 @@ const Index = () => {
           >
             <div className="object-label">
               <span>Now operating</span>
-              <strong>01 live product</strong>
+              <strong>0{products.length} live products</strong>
             </div>
             <div className="object-core">
               <span className="object-mark">d.</span>
@@ -216,78 +273,81 @@ const Index = () => {
         <div className="shell">
           <div className="section-heading">
             <div>
-              <p className="section-kicker">Product 01 · Live</p>
-              <h2>A student utility became a complete product system.</h2>
+              <div className="product-kicker-row">
+                <p className="section-kicker">{activeProduct.kicker}</p>
+                <div className="product-switch" role="tablist" aria-label="Dhethi products">
+                  {products.map((p, index) => (
+                    <button
+                      key={p.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={index === activeIndex}
+                      className={`product-switch-tab${index === activeIndex ? " is-active" : ""}`}
+                      onClick={() => setActiveIndex(index)}
+                    >
+                      {p.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <h2>{activeProduct.heading}</h2>
             </div>
-            <p>
-              JNTUH Connect started with one recurring problem: getting
-              university results without friction. It now brings 12+ academic
-              and career tools together across four production surfaces.
-            </p>
+            <p>{activeProduct.intro}</p>
           </div>
 
           <article className="product-card">
             <div className="product-topline">
               <div className="product-identity">
                 <span className="product-icon" aria-hidden="true">
-                  JC
+                  {activeProduct.tag}
                 </span>
                 <div>
-                  <p>Independently built &amp; operated</p>
-                  <h3>JNTUH Connect</h3>
+                  <p>{activeProduct.eyebrow}</p>
+                  <h3>{activeProduct.name}</h3>
                 </div>
               </div>
+
               <span className="live-pill">
                 <span /> Live in production
               </span>
             </div>
 
-            <div className="product-main">
+            <div
+              className={`product-main${activeProduct.metrics ? "" : " product-main-solo"}`}
+            >
               <div className="product-story">
-                <p className="product-intro">
-                  Results, credits, backlogs, resources, rankings, careers, and
-                  university updates—designed for the students who use them
-                  every day.
-                </p>
+                <p className="product-intro">{activeProduct.story}</p>
                 <div className="product-links">
-                  <a
-                    href="https://jntuhconnect.dhethi.com/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Open the web product{" "}
-                    <ArrowUpRight size={17} aria-hidden="true" />
-                  </a>
-                  <a
-                    href="https://play.google.com/store/apps/details?id=com.dhethi.jntuhconnect"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Google Play <ArrowUpRight size={17} aria-hidden="true" />
-                  </a>
-                  <a
-                    href="https://apps.apple.com/in/app/jntuh-connect/id6790828236"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    App Store <ArrowUpRight size={17} aria-hidden="true" />
-                  </a>
+                  {activeProduct.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {link.label} <ArrowUpRight size={17} aria-hidden="true" />
+                    </a>
+                  ))}
                 </div>
               </div>
 
-              <div className="metric-grid">
-                {productMetrics.map(({ icon: Icon, value, label }) => (
-                  <div className="metric" key={label}>
-                    <Icon size={18} aria-hidden="true" />
-                    <strong>{value}</strong>
-                    <span>{label}</span>
-                  </div>
-                ))}
-              </div>
+              {activeProduct.metrics && (
+                <div
+                  className={`metric-grid${activeProduct.metrics.length === 1 ? " metric-grid-solo" : ""}`}
+                >
+                  {activeProduct.metrics.map(({ icon: Icon, value, label }) => (
+                    <div className="metric" key={label}>
+                      <Icon size={18} aria-hidden="true" />
+                      <strong>{value}</strong>
+                      <span>{label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="surface-grid">
-              {productSurfaces.map(({ icon: Icon, label, detail }, index) => (
+              {activeProduct.surfaces.map(({ icon: Icon, label, detail }, index) => (
                 <div className="surface" key={label}>
                   <div className="surface-head">
                     <Icon size={19} aria-hidden="true" />
@@ -301,20 +361,21 @@ const Index = () => {
 
             <div className="product-foot">
               <div>
-                <Cloud size={20} aria-hidden="true" />
+                <activeProduct.foot.icon size={20} aria-hidden="true" />
                 <p>
-                  <strong>Lean production economics</strong>
-                  The complete AWS, Cloudflare, web, API, and app-store
-                  footprint operates for under $14 per month.
+                  <strong>{activeProduct.foot.title}</strong>
+                  {activeProduct.foot.text}
                 </p>
               </div>
-              <a
-                href="https://github.com/ThilakReddyy/JNTUHRESULTS-WEB"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Github size={17} aria-hidden="true" /> View source
-              </a>
+              {activeProduct.foot.link && (
+                <a
+                  href={activeProduct.foot.link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Github size={17} aria-hidden="true" /> {activeProduct.foot.link.label}
+                </a>
+              )}
             </div>
           </article>
         </div>
@@ -513,7 +574,7 @@ const Index = () => {
           <p className="section-kicker">Let&apos;s talk</p>
           <h2>Got an idea? Need something built?</h2>
           <p>
-            Tell us the problem worth solving — two lines is enough. We reply
+            Tell us the problem worth solving. Two lines is enough. We reply
             personally and only take on work we can build all the way through.
             Collaborations welcome, especially if you&apos;re a student with a
             real idea and no team yet.
@@ -538,6 +599,16 @@ const Index = () => {
             >
               <Instagram size={18} aria-hidden="true" />
               DM on Instagram
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+            <a
+              className="button button-quiet"
+              href="https://www.linkedin.com/company/dhethi/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Linkedin size={18} aria-hidden="true" />
+              Follow on LinkedIn
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>
