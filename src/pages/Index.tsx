@@ -5,7 +5,6 @@ import {
   Activity,
   ArrowRight,
   ArrowUpRight,
-  BookOpen,
   Boxes,
   Cloud,
   Code2,
@@ -22,8 +21,16 @@ import {
   Smartphone,
   Users,
   Bot,
+  Wallet,
   Zap,
 } from "lucide-react";
+
+const stats = [
+  { icon: Boxes, value: "02", label: "Live products", detail: "JNTUH Connect and BhuBharati Explorer" },
+  { icon: Users, value: "4K+", label: "Daily users", detail: "Students on JNTUH Connect every day" },
+  { icon: Activity, value: "22K+", label: "Daily API calls", detail: "Served from cached, async services" },
+  { icon: Wallet, value: "<$14", label: "Monthly infra", detail: "Full AWS, Cloudflare and app-store footprint" },
+];
 
 const services = [
   {
@@ -185,9 +192,12 @@ const notes = [
   },
 ];
 
+const hostOf = (href: string) => new URL(href).host;
+
 const Index = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeProduct = products[activeIndex];
+  const FootIcon = activeProduct.foot.icon;
 
   return (
     <Layout>
@@ -197,161 +207,170 @@ const Index = () => {
         canonical="https://dhethi.com/"
       />
 
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="grid-wash" aria-hidden="true" />
-        <div className="orbit orbit-one" aria-hidden="true" />
-        <div className="orbit orbit-two" aria-hidden="true" />
-
+      <section className="hero band band-card" aria-labelledby="hero-title">
         <div className="shell hero-inner">
-          <div className="hero-copy reveal">
-            <p className="eyebrow">
-              <span className="status-dot" aria-hidden="true" />
-              Independent product home
-            </p>
+          <div className="hero-copy">
+            <p className="eyebrow">Independent product home</p>
             <h1 id="hero-title">
-              Useful software,
-              <span>built all the way through.</span>
+              Useful software, built all the way <span className="highlight">through</span>.
             </h1>
             <p className="hero-lede">
               Dhethi turns practical problems into dependable web, mobile, and
-              backend products, then keeps them fast, useful, and running.
+              backend products — then keeps them fast, useful, and running.
             </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#product">
-                Explore the flagship
-                <ArrowRight size={18} aria-hidden="true" />
+              <a className="button button-primary button-lg" href="#product">
+                Explore the products
+                <ArrowRight size={16} aria-hidden="true" />
               </a>
-              <a className="button button-quiet" href="#principles">
+              <a className="button button-outline button-lg" href="#principles">
                 How Dhethi builds
-                <ArrowRight size={17} aria-hidden="true" />
               </a>
+            </div>
+            <div className="hero-chips">
+              <span className="mono-meta">Also here</span>
+              <a className="chip" href="#services">Services</a>
+              <a className="chip" href="#notes">Build notes</a>
+              <a className="chip" href="#contact">Work with us</a>
             </div>
           </div>
 
-          <div
-            className="hero-object reveal reveal-delay"
-            aria-label="Dhethi product system"
-          >
-            <div className="object-label">
-              <span>Now operating</span>
-              <strong>0{products.length} live products</strong>
+          <div className="register panel" aria-label="Dhethi product register">
+            <div className="panel-band">
+              <h2>Product register</h2>
+              <span className="mono-meta">0{products.length} live</span>
             </div>
-            <div className="object-core">
-              <span className="object-mark">d.</span>
-              <span className="object-ring" aria-hidden="true" />
-              <span
-                className="object-ring object-ring-two"
-                aria-hidden="true"
-              />
+            <div>
+              {products.map((p) => (
+                <a
+                  key={p.id}
+                  className="register-row"
+                  href={p.links[0].href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="icon-box icon-box-lg" aria-hidden="true">
+                    {p.tag}
+                  </span>
+                  <span className="register-body">
+                    <strong>{p.name}</strong>
+                    <small>{hostOf(p.links[0].href)}</small>
+                  </span>
+                  <span className="register-status mono-meta">
+                    <span className="live-dot" aria-hidden="true" /> Live
+                  </span>
+                </a>
+              ))}
             </div>
-            <div className="object-footer">
+            <div className="register-surfaces" aria-label="Surfaces Dhethi ships on">
               <span>Web</span>
               <span>API</span>
               <span>Android</span>
               <span>iOS</span>
+              <span>MCP</span>
             </div>
-          </div>
-        </div>
-
-        <div className="hero-ticker" aria-label="Dhethi capabilities">
-          <div className="ticker-track">
-            <span>PRODUCT ENGINEERING</span>
-            <i />
-            <span>NATIVE MOBILE</span>
-            <i />
-            <span>BACKEND SYSTEMS</span>
-            <i />
-            <span>RELEASE AUTOMATION</span>
-            <i />
-            <span>PRODUCTION OPERATIONS</span>
-            <i />
           </div>
         </div>
       </section>
 
-      <section id="product" className="product-section section-pad">
-        <div className="shell">
-          <div className="section-heading">
-            <div>
-              <div className="product-kicker-row">
-                <p className="section-kicker">{activeProduct.kicker}</p>
-                <div className="product-switch" role="tablist" aria-label="Dhethi products">
-                  {products.map((p, index) => (
-                    <button
-                      key={p.id}
-                      type="button"
-                      role="tab"
-                      aria-selected={index === activeIndex}
-                      className={`product-switch-tab${index === activeIndex ? " is-active" : ""}`}
-                      onClick={() => setActiveIndex(index)}
-                    >
-                      {p.name}
-                    </button>
-                  ))}
-                </div>
+      <section className="band band-paper" aria-labelledby="stats-title">
+        <div className="shell" style={{ paddingBlock: 40 }}>
+          <h2 id="stats-title" className="eyebrow eyebrow-sm">
+            Where Dhethi stands today
+          </h2>
+          <div className="stats-grid">
+            {stats.map(({ icon: Icon, value, label, detail }) => (
+              <div className="stat" key={label}>
+                <Icon size={16} aria-hidden="true" />
+                <strong>{value}</strong>
+                <span>{label}</span>
+                <small>{detail}</small>
               </div>
-              <h2>{activeProduct.heading}</h2>
-            </div>
-            <p>{activeProduct.intro}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="product" className="section-pad">
+        <div className="shell">
+          <div className="group-head">
+            <h2>Products</h2>
+            <p>{activeProduct.kicker}</p>
           </div>
 
-          <article className="product-card">
-            <div className="product-topline">
-              <div className="product-identity">
-                <span className="product-icon" aria-hidden="true">
-                  {activeProduct.tag}
-                </span>
-                <div>
-                  <p>{activeProduct.eyebrow}</p>
-                  <h3>{activeProduct.name}</h3>
-                </div>
-              </div>
+          <div className="product-head">
+            <div>
+              <h2 className="section-title" style={{ marginTop: 0 }}>
+                {activeProduct.heading}
+              </h2>
+              <p className="section-lede">{activeProduct.intro}</p>
+            </div>
+            <div className="tabs" role="tablist" aria-label="Dhethi products">
+              {products.map((p, index) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={index === activeIndex}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  {p.name}
+                </button>
+              ))}
+            </div>
+          </div>
 
-              <span className="live-pill">
-                <span /> Live in production
+          <article className="product-panel panel">
+            <div className="panel-band">
+              <h3>{activeProduct.eyebrow}</h3>
+              <span className="register-status mono-meta" style={{ marginTop: 0 }}>
+                <span className="live-dot" aria-hidden="true" /> Live in production
               </span>
             </div>
 
-            <div
-              className={`product-main${activeProduct.metrics ? "" : " product-main-solo"}`}
-            >
-              <div className="product-story">
-                <p className="product-intro">{activeProduct.story}</p>
+            <div className={`product-main${activeProduct.metrics.length === 1 ? " product-main-solo" : ""}`}>
+              <div>
+                <div className="product-identity">
+                  <span className="icon-box icon-box-lg" aria-hidden="true">
+                    {activeProduct.tag}
+                  </span>
+                  <h3>{activeProduct.name}</h3>
+                </div>
+                <p className="product-story">{activeProduct.story}</p>
                 <div className="product-links">
-                  {activeProduct.links.map((link) => (
+                  {activeProduct.links.map((link, index) => (
                     <a
                       key={link.href}
+                      className={`button ${index === 0 ? "button-primary" : "button-outline"}`}
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {link.label} <ArrowUpRight size={17} aria-hidden="true" />
+                      {link.label} <ArrowUpRight size={14} aria-hidden="true" />
                     </a>
                   ))}
                 </div>
               </div>
 
-              {activeProduct.metrics && (
-                <div
-                  className={`metric-grid${activeProduct.metrics.length === 1 ? " metric-grid-solo" : ""}`}
-                >
-                  {activeProduct.metrics.map(({ icon: Icon, value, label }) => (
-                    <div className="metric" key={label}>
-                      <Icon size={18} aria-hidden="true" />
-                      <strong>{value}</strong>
-                      <span>{label}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
+              <div
+                className={`metric-grid${activeProduct.metrics.length === 1 ? " metric-grid-solo" : ""}`}
+              >
+                {activeProduct.metrics.map(({ icon: Icon, value, label }) => (
+                  <div className="stat" key={label}>
+                    <Icon size={16} aria-hidden="true" />
+                    <strong>{value}</strong>
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="surface-grid">
+            <div className="ledger-grid">
               {activeProduct.surfaces.map(({ icon: Icon, label, detail }, index) => (
-                <div className="surface" key={label}>
-                  <div className="surface-head">
-                    <Icon size={19} aria-hidden="true" />
-                    <span>0{index + 1}</span>
+                <div className="ledger-cell" key={label}>
+                  <div className="ledger-cell-head">
+                    <Icon size={17} aria-hidden="true" />
+                    <span className="mono-meta">0{index + 1}</span>
                   </div>
                   <strong>{label}</strong>
                   <p>{detail}</p>
@@ -359,9 +378,9 @@ const Index = () => {
               ))}
             </div>
 
-            <div className="product-foot">
+            <div className="panel-foot product-foot">
               <div>
-                <activeProduct.foot.icon size={20} aria-hidden="true" />
+                <FootIcon size={14} aria-hidden="true" />
                 <p>
                   <strong>{activeProduct.foot.title}</strong>
                   {activeProduct.foot.text}
@@ -369,11 +388,12 @@ const Index = () => {
               </div>
               {activeProduct.foot.link && (
                 <a
+                  className="text-link"
                   href={activeProduct.foot.link.href}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Github size={17} aria-hidden="true" /> {activeProduct.foot.link.label}
+                  <Github size={13} aria-hidden="true" /> {activeProduct.foot.link.label}
                 </a>
               )}
             </div>
@@ -381,93 +401,95 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="services" className="services-section section-pad">
+      <section id="services" className="band band-sage section-pad" style={{ borderTop: "1px solid var(--border)" }}>
         <div className="shell">
-          <div className="section-heading section-heading-solo">
-            <div>
-              <p className="section-kicker">What we build</p>
-              <h2>Two builders. Three service lines.</h2>
-            </div>
+          <div className="group-head">
+            <h2>Services</h2>
+            <p>Two builders. Three service lines.</p>
           </div>
 
-          <div className="service-grid">
-            {services.map(
-              ({ number, icon: Icon, title, headline, description, tags }) => (
-                <article className="service-card" key={number}>
-                  <div className="service-card-head">
-                    <span className="service-number">{number}</span>
-                    <span className="service-icon-wrap">
-                      <Icon size={20} aria-hidden="true" />
+          <div className="card-grid">
+            {services.map(({ number, icon: Icon, title, headline, description, tags }) => (
+              <article className="tool-card" key={number}>
+                <div className="tool-card-head">
+                  <span className="icon-box" aria-hidden="true">
+                    <Icon size={17} />
+                  </span>
+                  <span className="tag">{number}</span>
+                </div>
+                <p className="eyebrow eyebrow-sm">{title}</p>
+                <h3>{headline}</h3>
+                <p>{description}</p>
+                <div className="tool-card-tags">
+                  {tags.map((tag) => (
+                    <span className="tag tag-paper" key={tag}>
+                      {tag}
                     </span>
-                  </div>
-                  <p className="service-label">{title}</p>
-                  <h3>{headline}</h3>
-                  <p className="service-desc">{description}</p>
-                  <div className="service-tags">
-                    {tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                </article>
-              ),
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section id="principles" className="principles-section section-pad">
-        <div className="shell">
-          <div className="section-heading section-heading-light">
-            <div>
-              <p className="section-kicker">How Dhethi builds</p>
-              <h2>Small surface area. Serious ownership.</h2>
-            </div>
-            <p>
-              The name on the product should be accountable for the experience,
-              the infrastructure, and what happens after release.
-            </p>
-          </div>
-
-          <div className="principle-grid">
-            {principles.map((principle) => (
-              <article key={principle.number}>
-                <span>{principle.number}</span>
-                <h3>{principle.title}</h3>
-                <p>{principle.description}</p>
+                  ))}
+                </div>
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="principles" className="band section-pad">
+        <div className="shell">
+          <div className="group-head">
+            <h2>How Dhethi builds</h2>
+            <p>Small surface area. Serious ownership.</p>
+          </div>
+          <p className="section-lede">
+            The name on the product should be accountable for the experience,
+            the infrastructure, and what happens after release.
+          </p>
+
+          <table className="ledger-table">
+            <thead>
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Principle</th>
+                <th scope="col">In practice</th>
+              </tr>
+            </thead>
+            <tbody>
+              {principles.map((principle) => (
+                <tr key={principle.number}>
+                  <td>{principle.number}</td>
+                  <td>{principle.title}</td>
+                  <td>{principle.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
           <div className="stack-line">
-            <div>
-              <Code2 size={18} aria-hidden="true" /> React &amp; Next.js
-            </div>
-            <div>
-              <Server size={18} aria-hidden="true" /> FastAPI &amp; Java
-            </div>
-            <div>
-              <Boxes size={18} aria-hidden="true" /> Postgres, Redis &amp;
-              queues
-            </div>
-            <div>
-              <Cloud size={18} aria-hidden="true" /> AWS &amp; Cloudflare
-            </div>
+            <span className="mono-meta">Stack</span>
+            <span className="chip">
+              <Code2 size={14} aria-hidden="true" /> React &amp; Next.js
+            </span>
+            <span className="chip">
+              <Server size={14} aria-hidden="true" /> FastAPI &amp; Java
+            </span>
+            <span className="chip">
+              <Boxes size={14} aria-hidden="true" /> Postgres, Redis &amp; queues
+            </span>
+            <span className="chip">
+              <Cloud size={14} aria-hidden="true" /> AWS &amp; Cloudflare
+            </span>
           </div>
         </div>
       </section>
 
-      <section id="brand" className="builder-section section-pad">
-        <div className="shell builder-grid">
-          <div className="builder-title">
-            <p className="section-kicker">Why Dhethi</p>
-            <h2>A home for products that earn their place.</h2>
-            <div className="builder-mark" aria-hidden="true">
-              d.
-            </div>
+      <section id="brand" className="band band-card section-pad">
+        <div className="shell brand-grid">
+          <div>
+            <p className="eyebrow">Why Dhethi</p>
+            <h2 className="section-title">A home for products that earn their place.</h2>
           </div>
 
-          <div className="builder-copy">
-            <p className="builder-lede">
+          <div className="brand-copy">
+            <p className="brand-lede">
               Dhethi is a standalone product brand for focused digital tools
               that solve specific, repeated problems.
             </p>
@@ -477,140 +499,134 @@ const Index = () => {
               complete expression of that standard.
             </p>
 
-            <div className="builder-proof">
-              <div>
-                <Compass size={20} aria-hidden="true" />
-                <span>
-                  Purpose
-                  <br />
-                  <strong>Practical problems first</strong>
-                </span>
-              </div>
-              <div>
-                <Gauge size={20} aria-hidden="true" />
-                <span>
-                  Standard
-                  <br />
-                  <strong>Fast and dependable</strong>
-                </span>
-              </div>
-              <div>
-                <Cloud size={20} aria-hidden="true" />
-                <span>
-                  Ownership
-                  <br />
-                  <strong>Built to keep running</strong>
-                </span>
-              </div>
+            <div className="proof-grid">
+              {[
+                { icon: Compass, label: "Purpose", value: "Practical problems first" },
+                { icon: Gauge, label: "Standard", value: "Fast and dependable" },
+                { icon: Cloud, label: "Ownership", value: "Built to keep running" },
+              ].map(({ icon: Icon, label, value }) => (
+                <div className="stat" key={label}>
+                  <Icon size={16} aria-hidden="true" />
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                </div>
+              ))}
             </div>
 
-            <p className="builder-ownership">
-              We don't assume we're the smartest team in the room. But we know
-              we're one of the most reliable. Skills can be trained. Experience
-              can be gained. What's harder to teach is ownership. If something
-              has the Dhethi name on it, it gets done properly.
-            </p>
+            <figure className="ownership panel panel-ink" style={{ margin: "28px 0 0" }}>
+              <div className="panel-band">
+                <h3>Ownership statement</h3>
+              </div>
+              <blockquote>
+                We don't assume we're the smartest team in the room. But we know
+                we're one of the most reliable. Skills can be trained. Experience
+                can be gained. What's harder to teach is ownership. If something
+                has the Dhethi name on it, it gets done properly.
+              </blockquote>
+            </figure>
 
-            <div className="builder-links">
-              <a
-                href="https://jntuhconnect.dhethi.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                JNTUH Connect <ArrowUpRight size={16} aria-hidden="true" />
+            <div className="brand-links">
+              <a className="chip" href="https://jntuhconnect.dhethi.com/" target="_blank" rel="noreferrer">
+                JNTUH Connect <ArrowUpRight size={13} aria-hidden="true" />
               </a>
               <a
+                className="chip"
                 href="https://play.google.com/store/apps/details?id=com.dhethi.jntuhconnect"
                 target="_blank"
                 rel="noreferrer"
               >
-                Google Play <ArrowUpRight size={16} aria-hidden="true" />
+                Google Play <ArrowUpRight size={13} aria-hidden="true" />
               </a>
               <a
+                className="chip"
                 href="https://apps.apple.com/in/app/jntuh-connect/id6790828236"
                 target="_blank"
                 rel="noreferrer"
               >
-                App Store <ArrowUpRight size={16} aria-hidden="true" />
+                App Store <ArrowUpRight size={13} aria-hidden="true" />
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="notes" className="notes-section section-pad">
+      <section id="notes" className="band section-pad">
         <div className="shell">
-          <div className="notes-heading">
-            <div>
-              <p className="section-kicker">Build notes</p>
-              <h2>Lessons from the work.</h2>
-            </div>
-            <BookOpen size={34} aria-hidden="true" />
+          <div className="group-head">
+            <h2>Build notes</h2>
+            <p>Lessons from the work.</p>
           </div>
 
-          <div className="notes-list">
+          <div className="notes-panel panel panel-sm">
             {notes.map((note, index) => (
-              <a
-                href={note.href}
-                target="_blank"
-                rel="noreferrer"
-                key={note.href}
-              >
+              <a className="note-row" href={note.href} target="_blank" rel="noreferrer" key={note.href}>
                 <span className="note-index">0{index + 1}</span>
-                <span className="note-topic">{note.topic}</span>
+                <span className="tag tag-paper">{note.topic}</span>
                 <span className="note-copy">
                   <strong>{note.title}</strong>
                   <small>{note.description}</small>
                 </span>
-                <ArrowUpRight size={21} aria-hidden="true" />
+                <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="contact-section">
-        <div className="shell contact-inner">
-          <p className="section-kicker">Let&apos;s talk</p>
-          <h2>Got an idea? Need something built?</h2>
-          <p>
-            Tell us the problem worth solving. Two lines is enough. We reply
-            personally and only take on work we can build all the way through.
-            Collaborations welcome, especially if you&apos;re a student with a
-            real idea and no team yet.
-          </p>
-          <div
-            className="hero-actions"
-            style={{ justifyContent: "center", marginTop: "2.4rem" }}
-          >
-            <a
-              className="button button-invert"
-              href="mailto:thilakreddy@dhethi.com?subject=Hi%20Dhethi%20%E2%80%94%20I%20have%20an%20idea"
-            >
-              <Mail size={18} aria-hidden="true" />
-              thilakreddy@dhethi.com
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-            <a
-              className="button button-quiet"
-              href="https://www.instagram.com/__thilak_reddy__/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Instagram size={18} aria-hidden="true" />
-              DM on Instagram
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-            <a
-              className="button button-quiet"
-              href="https://www.linkedin.com/company/dhethi/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Linkedin size={18} aria-hidden="true" />
-              Follow on LinkedIn
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
+      <section id="contact" className="band band-sage section-pad">
+        <div className="shell">
+          <div className="contact-panel panel panel-ink">
+            <div className="panel-band">
+              <h2>
+                <span className="live-dot live-dot-ink" aria-hidden="true" />
+                Let's talk
+              </h2>
+              <span className="mono-meta">We reply personally</span>
+            </div>
+            <div className="contact-body">
+              <div>
+                <h2>Got an idea? Need something built?</h2>
+                <p>
+                  Tell us the problem worth solving. Two lines is enough. We
+                  only take on work we can build all the way through.
+                  Collaborations welcome — especially if you're a student with
+                  a real idea and no team yet.
+                </p>
+              </div>
+              <div className="contact-actions">
+                <a
+                  className="button button-primary button-lg"
+                  href="mailto:thilakreddy@dhethi.com?subject=Hi%20Dhethi%20%E2%80%94%20I%20have%20an%20idea"
+                >
+                  <span>
+                    <Mail size={16} aria-hidden="true" /> thilakreddy@dhethi.com
+                  </span>
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+                <a
+                  className="button button-outline button-lg"
+                  href="https://www.instagram.com/__thilak_reddy__/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>
+                    <Instagram size={16} aria-hidden="true" /> DM on Instagram
+                  </span>
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+                <a
+                  className="button button-outline button-lg"
+                  href="https://www.linkedin.com/company/dhethi/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>
+                    <Linkedin size={16} aria-hidden="true" /> Follow on LinkedIn
+                  </span>
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -1,24 +1,21 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#product", label: "Product" },
+  { href: "#product", label: "Products" },
   { href: "#services", label: "Services" },
   { href: "#principles", label: "Principles" },
   { href: "#brand", label: "Why Dhethi" },
   { href: "#notes", label: "Notes" },
 ];
 
+const THEME_KEY = "dhethi-theme";
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const updateHeader = () => setScrolled(window.scrollY > 12);
-    updateHeader();
-    window.addEventListener("scroll", updateHeader, { passive: true });
-    return () => window.removeEventListener("scroll", updateHeader);
-  }, []);
+  const [dark, setDark] = useState(() =>
+    typeof document !== "undefined" && document.documentElement.classList.contains("dark"),
+  );
 
   useEffect(() => {
     if (!isOpen) return;
@@ -29,10 +26,19 @@ const Header = () => {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [isOpen]);
 
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    try {
+      localStorage.setItem(THEME_KEY, next ? "dark" : "light");
+    } catch {
+      // Storage can be unavailable (private mode); the toggle still works for this visit.
+    }
+  };
+
   return (
-    <header
-      className={scrolled ? "site-header site-header-scrolled" : "site-header"}
-    >
+    <header className="site-header">
       <div className="shell header-inner">
         <a href="#top" className="wordmark" aria-label="Dhethi, back to top">
           dhethi<span>.</span>
@@ -46,48 +52,43 @@ const Header = () => {
           ))}
         </nav>
 
-        <a href="#contact" className="lets-talk-btn hidden lg:inline-flex">
-          Let's Talk
-          <ArrowUpRight size={15} aria-hidden="true" />
-        </a>
+        <div className="header-actions">
+          <button
+            className="icon-button"
+            type="button"
+            onClick={toggleTheme}
+            aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
+          >
+            {dark ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
+          </button>
 
-        <button
-          className="menu-button"
-          type="button"
-          onClick={() => setIsOpen((open) => !open)}
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          aria-label={isOpen ? "Close navigation" : "Open navigation"}
-        >
-          {isOpen ? (
-            <X size={22} aria-hidden="true" />
-          ) : (
-            <Menu size={22} aria-hidden="true" />
-          )}
-        </button>
+          <a href="#contact" className="button button-primary header-cta">
+            Let's talk
+            <ArrowUpRight size={14} aria-hidden="true" />
+          </a>
+
+          <button
+            className="icon-button menu-button"
+            type="button"
+            onClick={() => setIsOpen((open) => !open)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? "Close navigation" : "Open navigation"}
+          >
+            {isOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+          </button>
+        </div>
       </div>
 
       {isOpen && (
-        <nav
-          id="mobile-menu"
-          className="mobile-nav"
-          aria-label="Mobile navigation"
-        >
+        <nav id="mobile-menu" className="mobile-nav" aria-label="Mobile navigation">
           <div className="shell">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-              >
+            {[...navLinks, { href: "#contact", label: "Let's talk" }].map((link) => (
+              <a key={link.href} href={link.href} onClick={() => setIsOpen(false)}>
                 {link.label}
-                <ArrowUpRight size={17} aria-hidden="true" />
+                <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             ))}
-            <a href="#contact" onClick={() => setIsOpen(false)}>
-              Let's Talk
-              <ArrowUpRight size={17} aria-hidden="true" />
-            </a>
           </div>
         </nav>
       )}

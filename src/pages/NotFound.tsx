@@ -8,13 +8,20 @@ const NotFound = () => {
 
   return (
     <main className="not-found">
-      <a href="/" className="wordmark" aria-label="Dhethi home">dhethi<span>.</span></a>
-      <div>
-        <p>404 / Off the map</p>
-        <h1>This product surface doesn’t exist.</h1>
-        <a className="button button-primary" href="/">
-          <ArrowLeft size={18} aria-hidden="true" /> Back to Dhethi
-        </a>
+      <div className="panel">
+        <div className="panel-band">
+          <a href="/" className="wordmark" aria-label="Dhethi home">
+            dhethi<span>.</span>
+          </a>
+          <span className="mono-meta">Error 404</span>
+        </div>
+        <div className="not-found-body">
+          <p className="eyebrow eyebrow-sm">Off the map</p>
+          <h1>This product surface doesn’t exist.</h1>
+          <a className="button button-primary" href="/">
+            <ArrowLeft size={16} aria-hidden="true" /> Back to Dhethi
+          </a>
+        </div>
       </div>
     </main>
   );
